@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="" />
+    <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="30" />
+            <state relative-caret-position="360">
+              <caret line="27" column="53" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -25,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SchoolController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="58" lean-forward="true" selection-start-line="15" selection-start-column="58" selection-end-line="19" selection-end-column="72" />
+            <state relative-caret-position="200">
+              <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="19" selection-end-column="72" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
               </folding>
@@ -39,45 +43,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
               <caret line="4" column="20" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="20" />
-              <folding>
-                <element signature="e#6932#6956#0#HTML" expanded="true" />
-                <element signature="e#10727#10748#0#HTML" expanded="true" />
-                <element signature="e#10809#10850#0#HTML" expanded="true" />
-                <element signature="e#10717#10741#0#HTML" expanded="true" />
-                <element signature="e#11994#12015#0#HTML" expanded="true" />
-                <element signature="e#12074#12115#0#HTML" expanded="true" />
-                <element signature="e#13155#16269#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/pathology/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-62">
-              <caret line="78" column="35" lean-forward="true" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-              <folding>
-                <element signature="e#1948#1973#0#HTML" expanded="true" />
-                <element signature="e#2539#3528#0#HTML" />
-                <element signature="e#2803#2828#0#HTML" expanded="true" />
-                <element signature="e#3018#3038#0#HTML" expanded="true" />
-                <element signature="e#3226#3289#0#HTML" expanded="true" />
-                <element signature="e#3558#5118#0#HTML" />
-                <element signature="e#7617#9722#0#HTML" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pathology/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PatientController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+            <state relative-caret-position="177">
+              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="e#40#58#0#PHP" expanded="true" />
-                <element signature="e#2666#3610#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -109,10 +94,14 @@
       <find>form</find>
       <find>&lt;form</find>
       <find>textarea</find>
+      <find>index</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\HTML5_Full_Version</dir>
     </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -246,34 +235,17 @@
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="knhpathology" type="b2602c69:ProjectViewProjectNode" />
-              <item name="knhpathology" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="knhpathology" type="b2602c69:ProjectViewProjectNode" />
-              <item name="knhpathology" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zucagob" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -323,15 +295,15 @@
       <workItem from="1581501007580" duration="1142000" />
       <workItem from="1582379627508" duration="26746000" />
       <workItem from="1582448203632" duration="21803000" />
+      <workItem from="1582737237247" duration="3441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59099000" />
+    <option name="totallyTimeSpent" value="62540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.28517398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -613,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Pathology.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_02_22_154846_create_pathologies_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -634,21 +599,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh13661582479144.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh17841582479157.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh73511582569561.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh76791582479110.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/report_uploads/knh80031582571015.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh13661582479144.png" />
+    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh17841582479157.png" />
+    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh73511582569561.png" />
+    <entry file="file://$PROJECT_DIR$/public/uploads/request_form_uploads/knh76791582479110.png" />
+    <entry file="file://$PROJECT_DIR$/public/uploads/report_uploads/knh80031582571015.jpeg" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_02_22_153223_create_patients_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -667,8 +622,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SchoolController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="58" lean-forward="true" selection-start-line="15" selection-start-column="58" selection-end-line="19" selection-end-column="72" />
+        <state relative-caret-position="200">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="19" selection-end-column="72" />
           <folding>
             <element signature="e#40#70#0#PHP" expanded="true" />
           </folding>
@@ -679,48 +634,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#6932#6956#0#HTML" expanded="true" />
-            <element signature="e#10727#10748#0#HTML" expanded="true" />
-            <element signature="e#10809#10850#0#HTML" expanded="true" />
-            <element signature="e#10717#10741#0#HTML" expanded="true" />
-            <element signature="e#11994#12015#0#HTML" expanded="true" />
-            <element signature="e#12074#12115#0#HTML" expanded="true" />
-            <element signature="e#13155#16269#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PatientController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
-            <element signature="e#2666#3610#0#PHP" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pathology/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="78" column="35" lean-forward="true" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+        <state relative-caret-position="380">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Pathology.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PatientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding>
-            <element signature="e#1948#1973#0#HTML" expanded="true" />
-            <element signature="e#2539#3528#0#HTML" />
-            <element signature="e#2803#2828#0#HTML" expanded="true" />
-            <element signature="e#3018#3038#0#HTML" expanded="true" />
-            <element signature="e#3226#3289#0#HTML" expanded="true" />
-            <element signature="e#3558#5118#0#HTML" />
-            <element signature="e#7617#9722#0#HTML" />
+            <element signature="e#40#58#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

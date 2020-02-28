@@ -17,8 +17,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::orderBy('created_at')->paginate(10);
-//        dd($schools);
+        $patients = Patient::orderBy('created_at')->paginate(5);
+        dd($patients);
         return view('pathology.index', compact('patients'));
     }
 

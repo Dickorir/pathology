@@ -116,20 +116,21 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>School code</th>
-                                    <th>Action</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Gender</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php $i = ($schools->currentpage()-1)* $schools->perpage() + 1;@endphp
-                                @foreach($schools as $school)
+                                @php $i = ($patients->currentpage()-1)* $patients->perpage() + 1;@endphp
+                                @foreach($patients as $patient)
                                     <tr>
                                         <td class="text-center">{{ $i++ }}</td>
-                                        <td class="text-capitalize">{{ $school->school_name ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $school->school_code ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->age ?? '' }}</td>
                                         <td>
-                                            <a href='{{ url('school',$school->school_code.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a>
-                                            <a href='{{ url('school',$school->school_code.'/delete') }}' class="toa" id="{{ $school->school_code }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
+                                            <a href='{{ url('school',$patient->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a>
+                                            <a href='{{ url('school',$patient->id.'/delete') }}' class="toa" id="{{ $patient->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>
                                     </tr>
@@ -137,7 +138,7 @@
                                 </tbody>
                             </table>
                             <div class="pull-right">
-                                {{ $schools->links() }}
+                                {{ $patients->links() }}
                             </div>
 
                         </div>
