@@ -33,11 +33,18 @@
                 </div>
             </li>
 
-            <li>
+            <li {!! (Request::is('pathology') || Request::is('pathology/add') ? 'class="active"' : '') !!}>
                 <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Pathology </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a class="nav-link" href="{{ url('/pathology') }}">View Pathology</a></li>
-                    <li><a class="nav-link" href="{{ url('/pathology/add')  }}">Add Pathology</a></li>
+                    <li {!! (Request::is('pathology')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/pathology') }}">View Pathology</a></li>
+                    <li {!! (Request::is('pathology/add')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/pathology/add')  }}">Add Pathology</a></li>
+                </ul>
+            </li>
+
+            <li {!! (Request::is('patients')  ? 'class="active"' : '') !!}>
+                <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Patients </span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="active"><a class="nav-link" href="{{ url('/patients') }}">View Patients</a></li>
                 </ul>
             </li>
             <li>

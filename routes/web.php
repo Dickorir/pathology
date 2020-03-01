@@ -24,12 +24,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     Route::resource('products','ProductController');
 
+// patients
+    Route::get('/patients', 'PatientController@index')->name('patients');
+
 // pathology
-    Route::get('/pathology', 'PatientController@index')->name('pathology');
+    Route::get('/pathology', 'PatientController@pathology')->name('pathology');
     Route::get('/pathology/add', 'PatientController@create')->name('pathology.create');
     Route::post('/pathology/add', 'PatientController@store')->name('pathology.store');
-    Route::get('pathology/{index_no}/edit', 'PatientController@edit')->name('pathology.edit');
-    Route::post('pathology/{index_no}/update', 'PatientController@update')->name('pathology.update');
+    Route::get('pathology/{id}', 'PatientController@show')->name('pathology.show');
+    Route::get('pathology/{id}/edit', 'PatientController@edit')->name('pathology.edit');
+    Route::post('pathology/{id}/update', 'PatientController@update')->name('pathology.update');
 });
 
 

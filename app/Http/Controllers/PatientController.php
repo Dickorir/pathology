@@ -10,16 +10,18 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $patients = Patient::orderBy('created_at')->paginate(5);
-        dd($patients);
-        return view('pathology.index', compact('patients'));
+//        dd($patients);
+        return view('pathology.patients', compact('patients'));
+    }
+
+    public function pathology()
+    {
+        $pathologies = Pathology::with(['patient'])->orderBy('created_at')->paginate(5);
+//        dd($pathologies);
+        return view('pathology.index', compact('pathologies'));
     }
 
     /**
@@ -205,9 +207,11 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(patient $patient)
+    public function show(Pathology $pathology, $id)
     {
-        //
+        $pathology = $pathology->with(['patient'])->where('id', '=', $id)->first();
+//        dd($pathology);
+        return view('pathology.show', compact('pathology'));
     }
 
     /**
@@ -216,7 +220,7 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(patient $patient)
+    public function edit(Pathology $pathology)
     {
         //
     }
@@ -228,7 +232,7 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, patient $patient)
+    public function update(Request $request, Pathology $pathology)
     {
         //
     }
@@ -239,7 +243,7 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(patient $patient)
+    public function destroy(Pathology $pathology)
     {
         //
     }

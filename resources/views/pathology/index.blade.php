@@ -115,22 +115,29 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Gender</th>
+                                    <th>patient_id</th>
+                                    <th>hospital</th>
+                                    <th>request_form_name</th>
+                                    <th>date</th>
+                                    <th>type_of_test</th>
+                                    <th>specimen</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php $i = ($patients->currentpage()-1)* $patients->perpage() + 1;@endphp
-                                @foreach($patients as $patient)
+                                @php $i = ($pathologies->currentpage()-1)* $pathologies->perpage() + 1;@endphp
+                                @foreach($pathologies as $pathology)
                                     <tr>
                                         <td class="text-center">{{ $i++ }}</td>
-                                        <td class="text-capitalize">{{ $patient->name ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $patient->age ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->patient->name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->hospital ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->request_form_name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->date ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->type_of_test ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->specimen ?? '' }}</td>
                                         <td>
-                                            <a href='{{ url('school',$patient->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a>
-                                            <a href='{{ url('school',$patient->id.'/delete') }}' class="toa" id="{{ $patient->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
+                                            <a href='{{ url('pathology',$pathology->id) }}'><i class="fa fa-eye text-success" title="view patient"></i></a> &nbsp;
+                                            <a href='{{ url('pathology',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a> &nbsp;
+                                            <a href='{{ url('pathology',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>
                                     </tr>
@@ -138,7 +145,7 @@
                                 </tbody>
                             </table>
                             <div class="pull-right">
-                                {{ $patients->links() }}
+                                {{ $pathologies->links() }}
                             </div>
 
                         </div>

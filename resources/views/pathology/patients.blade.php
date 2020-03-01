@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-     Zain Exam
+    Patients
     @parent
 @stop
 
@@ -33,7 +33,7 @@
                 </li> -->
 
                 <li class="breadcrumb-item active">
-                    <strong>Students</strong>
+                    <strong>Patients</strong>
                 </li>
             </ol>
         </div>
@@ -43,9 +43,9 @@
             <div class="col-lg-3">
                 <div class="ibox ">
                     <div class="ibox-content">
-                        <h1 class="no-margins">{{ $studentscount }}</h1>
+                        <h1 class="no-margins">909</h1>
                         <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
-                        <small>Total Students</small>
+                        <small>Total Schools</small>
                     </div>
                 </div>
             </div>
@@ -55,13 +55,11 @@
                 <div class="ibox">
                     @include('notifications')
                     <div class="ibox-title">
-                        <h5>Students </h5>
+                        <h5>Pathology </h5>
                         <div class="ibox-tools" style="margin-top: -8px;">
-                            <a href="{{ url('student/add') }}" class="btn btn-primary">
+                            <a href="{{ url('pathology/add') }}" class="btn btn-primary">
                                 Add <i class="fa fa-plus"></i>
                             </a>
-                            <a href="{{ url('students/import') }}" class="btn btn-success import_btn">
-                                <i class="fa fa-plus fa-fw"></i>Bulk Import</a>
                         </div>
                     </div>
                     <div class="ibox-title">
@@ -117,34 +115,24 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Index No</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>School code</th>
-                                    <th>Action</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php $i = ($students->currentpage()-1)* $students->perpage() + 1;@endphp
-                                @foreach($students as $student)
+                                @php $i = ($patients->currentpage()-1)* $patients->perpage() + 1;@endphp
+                                @foreach($patients as $patient)
                                     <tr>
                                         <td class="text-center">{{ $i++ }}</td>
-                                        <td class="text-capitalize">{{ $student->index_no ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $student->first_name ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $student->other_names ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $student->school_code ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->age ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->gender ?? '' }}</td>
                                         <td>
-                                            <a class="" href=""
-                                               onclick="event.preventDefault();
-                                                   document.getElementById('edit-form{{$student->index_no}}').submit();">
-                                                <i class="fa fa-pencil-square-o text-info" title="edit student"></i>
-                                            </a>
-
-                                            <a href='{{ url('admin',$student->index_no.'/delete') }}' class="toa" id="{{ $student->index_no }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
-                                            <form id="edit-form{{$student->index_no}}" method="POST" action="{{ route('student.update') }}">
-                                                @csrf
-                                                <input name="student_index_no" value="{{ $student->index_no ?? '' }}" type="hidden">
-                                            </form>
+                                            <a href='{{ url('school',$patient->id) }}'><i class="fa fa-eye text-success" title="view patient"></i></a> &nbsp;
+                                            <a href='{{ url('school',$patient->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a> &nbsp;
+                                            <a href='{{ url('school',$patient->id.'/delete') }}' class="toa" id="{{ $patient->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>
                                     </tr>
@@ -152,7 +140,7 @@
                                 </tbody>
                             </table>
                             <div class="pull-right">
-                                {{ $students->links() }}
+                                {{ $patients->links() }}
                             </div>
 
                         </div>
