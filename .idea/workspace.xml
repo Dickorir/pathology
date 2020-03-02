@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/knhpathology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/knhpathology.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/_left_menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_left_menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pathology/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pathology/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schools/create.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schools/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schools/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schools/search.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +208,7 @@
       <workItem from="1582737237247" duration="3441000" />
       <workItem from="1583003611145" duration="18759000" />
       <workItem from="1583135839924" duration="2986000" />
-      <workItem from="1583152851372" duration="8343000" />
+      <workItem from="1583152851372" duration="8459000" />
     </task>
     <servers />
   </component>
