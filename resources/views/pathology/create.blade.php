@@ -184,12 +184,12 @@
                                         <div class="col-sm-6 b-r">
                                                 <div class="form-group">
                                                     <label>clinical_history_notes</label>
-                                                    <textarea name="clinical_history_notes" class="form-control summernote-notes" ></textarea>
+                                                    <textarea name="clinical_history_notes" class="form-control summernote-notes" placeholder="clinical_history_notes">x</textarea>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Report</label>
-                                                    <textarea name="report" class="form-control summernote-report" ></textarea>
+                                                    <textarea name="report" class="form-control summernote-report" placeholder="Report">x</textarea>
                                                 </div>
                                         </div>
                                         <div class="col-sm-6">
