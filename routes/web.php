@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('pathology/{id}/update', 'PatientController@update')->name('pathology.update');
 });
 
+Route::get('logActivity', 'HomeController@logActivity');
 
 
 // students

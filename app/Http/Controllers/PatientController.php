@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LogActivity;
 use App\Pathology;
 use App\Patient;
 use Carbon\Carbon;
@@ -48,8 +49,10 @@ class PatientController extends Controller
         $request_form = $this->uploadForm($request);
         $report_upload = $this->uploadReport($request);
 
-        $request->request->add(['request_form' => $request_form]); //add request
-        $request->request->add(['report_upload' => $report_upload]); //add request
+        $request->request->add(['request_form_up' => $request_form]); //add request
+        $request->request->add(['report_upload_up' => $report_upload]); //add request
+
+//        dd($request);
 
         event(new Registered($info = $this->create_info($request->all())));
 
@@ -62,6 +65,7 @@ class PatientController extends Controller
 
     protected function create_info(array $data)
     {
+//        dd($data,8);
         $date = Carbon::createFromFormat('d/m/Y', $data['date'])->toDateString();
 
         $repo = $this->storetext($data['report']);
@@ -80,27 +84,29 @@ class PatientController extends Controller
             'location' => $data['location'],
             'district' => $data['district'],
         ];
-        $pat = Patient::create($data_patient);
+        $patient = Patient::create($data_patient);
 //        dd($pat);
         $data_path = [
-            'patient_id' => $pat->id,
+            'patient_id' => $patient->id,
             'hospital' => $data['hospital'],
             'doctor_name' => $data['doctor_name'],
             'request_form_name' => $data['request_form_name'],
-            'request_form_upload' => $data['request_form'],
+            'request_form_upload' => $data['request_form_up'],
             'form_number' => $data['form_number'],
             'date' => $date,
             'type_of_test' => $data['type_of_test'],
             'specimen' => $data['specimen'],
             'report' => $repo,
-            'report_upload' => $data['report_upload'],
+            'report_upload' => $data['report_upload_up'],
             'clinical_history_notes' => $notes,
         ];
 
 //        dd($data_path);
-        Pathology::create($data_path);
+        $pathology = Pathology::create($data_path);
 
-        return $pat->id;
+        LogActivity::addToLog('Pathology Request form:'.$pathology->request_form_name.'('.$pathology->id.') for '.$patient->name.'('.$patient->id.') info added Successfully');
+
+        return $pathology->id;
     }
 
     public function storetext($detail)

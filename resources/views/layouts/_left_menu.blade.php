@@ -52,6 +52,7 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                     <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                    <li><a class="nav-link" href="{{ url('logActivity')}}">Activity Log</a></li>
                 </ul>
             </li>
         </ul>

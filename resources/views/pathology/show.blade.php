@@ -51,13 +51,8 @@
                         <div class="row">
                             <div class="col-md-5">
 
-
-
                                     <div class="ibox-content no-padding border-left-right">
-                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}">
-                                        <img src="/uploads/request_form_uploads/knh15201582571575.png">
-                                        <img src="{{ asset('uploads/request_form_uploads/knh15201582571575.png') }}" alt="voopo voip">
-
+                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" width="100px" height="100px">
                                     </div>
 
                             </div>
@@ -103,10 +98,7 @@
                                 <dd> {!! $pathology->report ?? 'None' !!} </dd>
 
                                 <div class="ibox-content no-padding border-left-right">
-                                    <img src="{{ asset('uploads/request_form_uploads/'.$pathology->report_upload) }}">
-                                    <img src="/uploads/request_form_uploads/knh15201582571575.png">
-                                    <img src="{{ asset('uploads/request_form_uploads/knh15201582571575.png') }}" alt="voopo voip">
-
+                                    <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form">
                                 </div>
 
 
