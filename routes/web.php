@@ -12,12 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.getotp');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/getlogin', 'UserController@getlogin')->name('get_otp');
+Route::post('/getlogin', 'UserController@get_otp')->name('get_otp');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

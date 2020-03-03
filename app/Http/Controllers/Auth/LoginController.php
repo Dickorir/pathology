@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\LogActivity;
 use App\Http\Controllers\Controller;
 use App\User;
 use Carbon\Carbon;
@@ -42,6 +43,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+//        dd($request);
         $this->validateLogin($request);
 
         $username = User::where('tel', '=', $request->tel)
@@ -51,9 +53,6 @@ class LoginController extends Controller
         if(is_null($username)){
             return redirect()->back()->with('error', ' '.$request->tel.' is not registered!');
         }
-
-        User::find($username->id)->update(['last_login' => Carbon::now(),]);
-
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -100,5 +99,12 @@ class LoginController extends Controller
 
         return [$usernameColumn => $usernameInput, 'password' => $request->password];
         //        return [$usernameColumn => $usernameInput, 'password' => $request->password, 'verified' => 1];
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        User::find($user->id)->update(['last_login' => Carbon::now(),]);
+
+        LogActivity::addToLog('Logged in  ('.$user->email.'/'.$user->tel.')');
     }
 }
