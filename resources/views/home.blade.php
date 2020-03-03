@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Zain Exam
+    Knh Pathology
     @parent
 @stop
 
@@ -17,12 +17,12 @@
             <div class="col-lg-3">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <span class="label label-success float-right">Student</span>
-                        <h5>Student marks</h5>
+                        <span class="label label-success float-right">Patients</span>
+                        <h5>Patients</h5>
                     </div>
                     <div class="ibox-content">
                         <h1 class="no-margins"></h1>
-                        <small>Score</small>
+                        <small>Total</small>
                     </div>
                 </div>
             </div>

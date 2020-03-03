@@ -47,6 +47,8 @@
                     <th>Ip</th>
                     <th width="300px">User Agent</th>
                     <th>User Id</th>
+                    <th>Name</th>
+                    <th>Time</th>
                     <th>Action</th>
                 </tr>
                 @if($logs->count())
@@ -59,6 +61,8 @@
                             <td class="text-warning">{{ $log->ip }}</td>
                             <td class="text-danger">{{ $log->agent }}</td>
                             <td>{{ $log->user_id }}</td>
+                            <td>{{ $log->user_name }}</td>
+                            <td>{{ $log->created_at }}</td>
                             <td><button class="btn btn-danger btn-sm">Delete</button></td>
                         </tr>
                     @endforeach
