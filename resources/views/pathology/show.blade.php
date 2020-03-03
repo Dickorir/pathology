@@ -52,7 +52,8 @@
                             <div class="col-md-5">
 
                                     <div class="ibox-content no-padding border-left-right">
-                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" width="100px" height="100px">
+                                        Request form<br>
+                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" width="500px" height="700px">
                                     </div>
 
                             </div>
@@ -98,7 +99,7 @@
                                 <dd> {!! $pathology->report ?? 'None' !!} </dd>
 
                                 <div class="ibox-content no-padding border-left-right">
-                                    <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form">
+                                    <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form"  width="500px" height="700px">>
                                 </div>
 
 
@@ -109,9 +110,9 @@
                     </div>
                     <div class="ibox-footer">
                             <span class="float-right">
-                                Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                                {{ date('D-d-M-Y') }}
                             </span>
-                        The generated Lorem Ipsum is therefore always free
+                        Histology
                     </div>
                 </div>
 

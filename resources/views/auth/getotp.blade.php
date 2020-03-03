@@ -25,29 +25,20 @@
 
         </div>
         <h3>Welcome to KNH PATHOLOGY </h3>
-        <p>Login in.</p>
+        <p>Enter you Email or Phone Number to get One Time Password (OTP)</p>
         @include('notifications')
-        <form class="m-t" role="form" method="POST" action="{{ route('login') }}">
+        <form class="m-t" role="form" method="POST" action="{{ route('get_otp') }}">
             @csrf
             <div class="form-group">
-                <input id="tel" type="text" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus placeholder="Email/ Phone">
+                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Email / Phone No">
 
-                @error('tel')
+                @error('username')
                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                 @enderror
             </div>
-            <div class="form-group">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
-
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                @enderror
-            </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <button type="submit" class="btn btn-primary block full-width m-b">Get OTP</button>
 
         </form>
         <!-- <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p> -->

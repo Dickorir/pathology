@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use AfricasTalking\SDK\AfricasTalking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -147,4 +148,80 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success','User deleted successfully');
     }
+
+
+    public function getlogin()
+    {
+        return view('auth.getotp');
+    }
+
+    public function sendSms($otp, $uname)
+    {
+
+        // $username = 'sandbox'; // use 'sandbox' for development in the test environment
+        // $apiKey   = '03a775b072b9a1e23b88810b371dc60b7c34f8d5e2df61ef8eff43079089def5'; // use your sandbox app API key for development in the test environment
+        // $AT       = new AfricasTalking($username, $apiKey);
+
+        $username = 'Dickilla'; // use 'sandbox' for development in the test environment
+        $apiKey   = '068c0e4c47593753aa837c0162125fc7c17114301f8e247d93d9866020b298f4'; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
+
+// Get one of the services
+        $sms      = $AT->sms();
+
+// Use the service
+        $result   = $sms->send([
+            'to'      => $uname,
+            'message' => 'Your OTP for KNH Pathology: '.$otp
+        ]);
+        return true;
+    }
+
+    public function get_otp(Request $request)
+    {
+        $this->validateOtp($request);
+
+        $username = User::where('tel', '=', $request->username)
+            ->orWhere('email', '=', $request->username)
+            ->first();
+
+        if(is_null($username)){
+            return redirect()->back()->with('error', ' '.$request->username.' is not registered!');
+        }
+
+        $num = rand(1000, 9999);
+
+        $uname = $request->username;
+        if ( $this->checkEmail($uname) ) {
+            dd('send email');
+        }else{
+            $this->sendSms($num, $uname);
+        }
+//        dd('laa');
+        // update password for this user
+        User::find($username->id)->update(['password' => Hash::make($num),]);
+
+        return redirect('login')->with('success', trans('OTP sent. Please check You Email/Phone'));
+    }
+
+    function checkEmail($email) {
+        $find1 = strpos($email, '@');
+        $find2 = strpos($email, '.');
+        return ($find1 !== false && $find2 !== false && $find2 > $find1);
+    }
+
+
+    protected function validateOtp(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+        ]);
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+
 }
