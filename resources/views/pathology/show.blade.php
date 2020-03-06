@@ -16,6 +16,33 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/sweetalert/sweetalert.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <style>
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        .report_form img {
+            margin-left: 100px;
+            transition: transform 0.25s ease;
+            cursor: zoom-in;
+        }
+        .request_form img {
+            margin-left: 100px;
+            transition: transform 0.25s ease;
+            cursor: zoom-in;
+        }
+
+        input[name=form_req]:checked ~ label > img {
+            transform: scale(2.1);
+            cursor: zoom-out;
+        }
+
+        input[name=form_rep]:checked ~ label > img {
+            transform: scale(2.1);
+            cursor: zoom-out;
+        }
+    </style>
 @stop
 {{-- Page content --}}
 @section('content')
@@ -51,17 +78,28 @@
                         <div class="row">
                             <div class="col-md-5">
 
-                                    <div class="ibox-content no-padding border-left-right">
-                                        Request form<br>
-                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" width="500px" height="700px">
-                                    </div>
+                                <div class="ibox-content no-padding border-left-right request_form ">
+                                    <span>Request form</span><br>
+                                    <input type="checkbox" id="zoomCheck" name="form_req">
+                                    <label for="zoomCheck">
+                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" style="width: 200px;">
+                                    </label>
+                                </div>
+
+                                <div class="ibox-content no-padding border-left-right report_form">
+                                    <span class="">Report form</span><br>
+                                    <input type="checkbox" id="zoomCheck2" name="form_rep">
+                                    <label for="zoomCheck2">
+                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" style="width: 200px;">
+                                    </label>
+                                </div>
 
                             </div>
                             <div class="col-md-7">
 
                                 <h2 class="font-bold m-b-xs">
                                     Pathology Info
-{{--                                    {{ $pathology->patient->name }}--}}
+                                    {{--                                    {{ $pathology->patient->name }}--}}
                                 </h2>
                                 <hr>
 
@@ -98,9 +136,6 @@
                                 <dt>report</dt>
                                 <dd> {!! $pathology->report ?? 'None' !!} </dd>
 
-                                <div class="ibox-content no-padding border-left-right">
-                                    <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form"  width="500px" height="700px">>
-                                </div>
 
 
 

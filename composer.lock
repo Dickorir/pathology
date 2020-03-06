@@ -2224,16 +2224,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "e3a95d2a954b4608c256095db5c8c0c416bcb71e"
+                "reference": "e90ed6242a8fa29735529160b9c21cb77b233e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e3a95d2a954b4608c256095db5c8c0c416bcb71e",
-                "reference": "e3a95d2a954b4608c256095db5c8c0c416bcb71e",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e90ed6242a8fa29735529160b9c21cb77b233e7f",
+                "reference": "e90ed6242a8fa29735529160b9c21cb77b233e7f",
                 "shasum": ""
             },
             "require": {
@@ -2241,11 +2241,11 @@
                 "illuminate/container": "^5.8|^6.0|^7.0",
                 "illuminate/contracts": "^5.8|^6.0|^7.0",
                 "illuminate/database": "^5.8|^6.0|^7.0",
-                "php": "^7.2"
+                "php": "^7.2.5"
             },
             "require-dev": {
                 "orchestra/testbench": "^3.8|^4.0|^5.0",
-                "phpunit/phpunit": "^8.0",
+                "phpunit/phpunit": "^8.0|^9.0",
                 "predis/predis": "^1.1"
             },
             "type": "library",
@@ -2288,7 +2288,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2020-03-02T21:32:49+00:00"
+            "time": "2020-03-03T21:31:02+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4536,16 +4536,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -4595,7 +4595,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

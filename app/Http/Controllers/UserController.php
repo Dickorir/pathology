@@ -158,7 +158,7 @@ class UserController extends Controller
     public function sendSms($otp, $uname)
     {
 
-        // $username = 'sandbox'; // use 'sandbox' for development in the test environment
+//         $username = 'sandbox'; // use 'sandbox' for development in the test environment
         // $apiKey   = '03a775b072b9a1e23b88810b371dc60b7c34f8d5e2df61ef8eff43079089def5'; // use your sandbox app API key for development in the test environment
         // $AT       = new AfricasTalking($username, $apiKey);
 
@@ -174,6 +174,7 @@ class UserController extends Controller
             'to'      => $uname,
             'message' => 'Your OTP for KNH Pathology: '.$otp
         ]);
+
         return true;
     }
 

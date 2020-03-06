@@ -226,9 +226,11 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pathology $pathology)
+    public function edit(Pathology $pathology, $id)
     {
-        //
+        $pathology = $pathology->with(['patient'])->where('id', '=', $id)->first();
+//        dd($pathology);
+        return view('pathology.edit', compact('pathology'));
     }
 
     /**
