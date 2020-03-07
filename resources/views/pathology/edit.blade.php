@@ -63,7 +63,7 @@
                     </div>
                     <div class="ibox-content">
 
-                        <form class="m-t" role="form"  method="POST" action="{{ route('pathology.store') }}"  enctype="multipart/form-data">
+                        <form class="m-t" role="form"  method="POST" action="{{ route('pathology.update', $pathology->id) }}"  enctype="multipart/form-data">
                             @csrf
                             <div id="wizard">
 
@@ -315,12 +315,21 @@
         });
     </script>
     <script>
-        $(document).ready(function(){
-            $('.summernote').summernote();
-
+        $(document).ready(function() {
+            //initialize summernote
             $('.summernote-notes').summernote();
+            //assign the variable passed from controller to a JavaScript variable.
+            var content = {!! json_encode($pathology->clinical_history_notes) !!};
+            //set the content to summernote using `code` attribute.
+            $('.summernote-notes').summernote('code', content);
+        });
+        $(document).ready(function() {
+            //initialize summernote
             $('.summernote-report').summernote();
-
+            //assign the variable passed from controller to a JavaScript variable.
+            var content = {!! json_encode($pathology->report) !!};
+            //set the content to summernote using `code` attribute.
+            $('.summernote-report').summernote('code', content);
         });
     </script>
 

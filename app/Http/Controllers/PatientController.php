@@ -7,6 +7,7 @@ use App\Pathology;
 use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -139,7 +140,7 @@ class PatientController extends Controller
         return $detail;
     }
 
-    public function uploadReport($request)
+    public function uploadReport($request, $id = null)
     {
 //        dd($data, 'ups');
         $slug = str_slug('KNH_');
@@ -154,6 +155,12 @@ class PatientController extends Controller
             $upload_dir = public_path('uploads/report_uploads/');
             if (!file_exists($upload_dir)) {
                 mkdir($upload_dir, 0777, true);
+            }
+
+            // check if there is another file and the delete the file
+            if ($id != null){
+                $pathology = Pathology::with(['patient'])->where('id', '=', $id)->first();
+                File::delete($upload_dir.$pathology->report_upload);
             }
 
             //get file name of image  and concatenate with 4 random integer for unique
@@ -173,21 +180,27 @@ class PatientController extends Controller
 
         return null;
     }
-    public function uploadForm($request)
+    public function uploadForm($request, $id=null)
     {
-//        dd($data, 'ups');
+//        dd($id, 'ups');
         $slug = str_slug('KNH_');
         $fileName = null;
 
-//        dd($slug);
         //check if image exist
         if ($request->hasFile('request_form_upload')) {
+//            dd($slug);
 
             $image = $request->file('request_form_upload');
 
             $upload_dir = public_path('uploads/request_form_uploads/');
             if (!file_exists($upload_dir)) {
                 mkdir($upload_dir, 0777, true);
+            }
+
+            // check if there is another file and the delete the file
+            if ($id != null){
+                $pathology = Pathology::with(['patient'])->where('id', '=', $id)->first();
+                File::delete($upload_dir.$pathology->request_form_upload);
             }
 
             //get file name of image  and concatenate with 4 random integer for unique
@@ -204,6 +217,7 @@ class PatientController extends Controller
 
             return $fileName;
         }
+//        dd('nje');
 
         return null;
     }
@@ -240,9 +254,28 @@ class PatientController extends Controller
      * @param  \App\patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pathology $pathology)
+    public function update(Request $request, $id)
     {
-        //
+        $request_form = $this->uploadForm($request, $id);
+        $report_upload = $this->uploadReport($request, $id);
+
+        $request->request->add(['request_form_up' => $request_form]); //add request
+        $request->request->add(['report_upload_up' => $report_upload]); //add request
+
+        $repo = $this->storetext($request->report);
+        $notes = $this->storetext($request->clinical_history_notes);
+
+        dd($request);
+
+        $histology = Pathology::where('id', $id)->first();
+//        dd($school);
+        $histology->update($request->all());
+//        dd($admin);
+        if ($histology->id) {
+            return redirect('histology')->with('success', trans('histology updated'));
+        } else {
+            return redirect('histology')->withInput()->with('error', trans('histology not updated'));
+        }
     }
 
     /**
