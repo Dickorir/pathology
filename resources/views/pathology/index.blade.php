@@ -45,7 +45,7 @@
                     <div class="ibox-content">
                         <h1 class="no-margins">909</h1>
                         <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
-                        <small>Total Schools</small>
+                        <small>Total Histology</small>
                     </div>
                 </div>
             </div>
@@ -135,9 +135,9 @@
                                         <td class="text-capitalize">{{ $pathology->type_of_test ?? '' }}</td>
                                         <td class="text-capitalize">{{ $pathology->specimen ?? '' }}</td>
                                         <td>
-                                            <a href='{{ url('pathology',$pathology->id) }}'><i class="fa fa-eye text-success" title="view patient"></i></a> &nbsp;
-                                            <a href='{{ url('pathology',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a> &nbsp;
-                                            <a href='{{ url('pathology',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
+                                            <a href='{{ url('pathology',$pathology->id) }}'><i class="fa fa-eye text-success" title="view histology"></i></a> &nbsp;
+                                            <a href='{{ url('pathology',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit histology"></i></a> &nbsp;
+                                            <a href='{{ url('pathology',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete histology"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>
                                     </tr>
