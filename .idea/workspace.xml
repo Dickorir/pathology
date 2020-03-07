@@ -236,8 +236,10 @@
       <screen x="0" y="27" width="1600" height="827" />
     </state>
     <state x="583" y="198" width="424" height="491" key="FileChooserDialogImpl/0.27.1600.827@0.27.1600.827" timestamp="1583572949244" />
-    <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog" timestamp="1583569763744" />
-    <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
+    <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog" timestamp="1583574424353">
+      <screen x="0" y="27" width="1600" height="827" />
+    </state>
+    <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog/0.27.1600.827@0.27.1600.827" timestamp="1583574424353" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1583569763744" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
   </component>
