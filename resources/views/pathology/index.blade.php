@@ -43,7 +43,7 @@
             <div class="col-lg-3">
                 <div class="ibox ">
                     <div class="ibox-content">
-                        <h1 class="no-margins">909</h1>
+                        <h1 class="no-margins">{{ $pathologies_count }}</h1>
                         <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
                         <small>Total Histology</small>
                     </div>

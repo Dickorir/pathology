@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/knhpathology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/knhpathology.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +213,7 @@
       <workItem from="1583169607041" duration="1792000" />
       <workItem from="1583181976193" duration="7585000" />
       <workItem from="1583348679989" duration="12741000" />
-      <workItem from="1583733264966" duration="591000" />
+      <workItem from="1583733264966" duration="3805000" />
     </task>
     <servers />
   </component>
@@ -241,5 +243,9 @@
     <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog/0.27.1600.827@0.27.1600.827" timestamp="1583574424353" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1583569763744" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
+    <state x="429" y="234" width="732" height="420" key="git4idea.merge.GitPullDialog" timestamp="1583754150024">
+      <screen x="0" y="27" width="1600" height="827" />
+    </state>
+    <state x="429" y="234" width="732" height="420" key="git4idea.merge.GitPullDialog/0.27.1600.827@0.27.1600.827" timestamp="1583754150024" />
   </component>
 </project>
