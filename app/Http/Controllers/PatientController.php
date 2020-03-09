@@ -22,8 +22,9 @@ class PatientController extends Controller
     public function pathology()
     {
         $pathologies = Pathology::with(['patient'])->orderBy('created_at')->paginate(5);
-//        dd($pathologies);
-        return view('pathology.index', compact('pathologies'));
+        $pathologies_count = Pathology::count();
+//        dd($pathologies_count);
+        return view('pathology.index', compact('pathologies','pathologies_count'));
     }
 
     /**
