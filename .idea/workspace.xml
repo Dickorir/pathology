@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/knhpathology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/knhpathology.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pathology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,6 +211,7 @@
       <workItem from="1583169607041" duration="1792000" />
       <workItem from="1583181976193" duration="7585000" />
       <workItem from="1583348679989" duration="12741000" />
+      <workItem from="1583733264966" duration="591000" />
     </task>
     <servers />
   </component>
