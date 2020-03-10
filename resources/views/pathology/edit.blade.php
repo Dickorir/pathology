@@ -172,7 +172,7 @@
                                                     <input type="file" class="custom-file-input" id="logo1" name="request_form_upload" onchange="document.getElementById('fronts').src = window.URL.createObjectURL(this.files[0]);$('#drop').hide();$('#onas').show();">
                                                     <label for="logo1" class="custom-file-label">Choose file...</label>
                                                 </div>
-                                                <span id="onas" style="display: none" ><img id="fronts" alt="fronts image" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
+                                                <span id="onas" style="" ><img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" id="fronts" alt="fronts image" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Report Upload <span class="text-danger">*</span></label>
-                                                <span id="ona" style="display: none" ><img id="front" alt="front image" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
+                                                <span id="ona" style="" ><img id="front" alt="front image" src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="logo" name="report_upload" onchange="document.getElementById('front').src = window.URL.createObjectURL(this.files[0]);$('#drop').hide();$('#ona').show();">
                                                     <label for="logo" class="custom-file-label">Choose file...</label>
@@ -206,7 +206,7 @@
                                         <div class="col-sm-12">
 
                                             <div class="form-group">
-                                                <button type="submit" class="float-right">Submit</button>
+                                                <button type="submit" class="float-right btn  btn-info">Update</button>
 
                                             </div>
                                         </div>

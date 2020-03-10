@@ -90,7 +90,7 @@
                                     <span class="">Report form</span><br>
                                     <input type="checkbox" id="zoomCheck2" name="form_rep">
                                     <label for="zoomCheck2">
-                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" style="width: 200px;">
+                                        <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form" style="width: 200px;">
                                     </label>
                                 </div>
 

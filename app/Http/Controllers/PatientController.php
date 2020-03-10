@@ -7,8 +7,8 @@ use App\Pathology;
 use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PatientController extends Controller
 {
@@ -198,11 +198,13 @@ class PatientController extends Controller
                 mkdir($upload_dir, 0777, true);
             }
 
+
             // check if there is another file and the delete the file
             if ($id != null){
                 $pathology = Pathology::with(['patient'])->where('id', '=', $id)->first();
                 File::delete($upload_dir.$pathology->request_form_upload);
             }
+//            dd($pathology);
 
             //get file name of image  and concatenate with 4 random integer for unique
             $fileName = $slug . rand(1111, 9999) . time() . '.' . $image->getClientOriginalExtension();
@@ -257,6 +259,8 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $date = Carbon::createFromFormat('d/m/Y', $request->date)->toDateString();
+
         $request_form = $this->uploadForm($request, $id);
         $report_upload = $this->uploadReport($request, $id);
 
@@ -266,16 +270,43 @@ class PatientController extends Controller
         $repo = $this->storetext($request->report);
         $notes = $this->storetext($request->clinical_history_notes);
 
-        dd($request);
-
         $histology = Pathology::where('id', $id)->first();
-//        dd($school);
-        $histology->update($request->all());
+//        dd($histology);
+        $data_patient = [
+            'name' => $request->name,
+            'address' => $request->address,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'tel' => $request->tel,
+            'email' => $request->email,
+            'id_no' => $request->id_no,
+            'village' => $request->village,
+            'location' => $request->location,
+            'district' => $request->district,
+        ];
+
+        $update = Patient::where('id', $histology->patient_id)->update($data_patient);
+
+        $data_path = [
+            'hospital' => $request->hospital,
+            'doctor_name' => $request->doctor_name,
+            'request_form_name' => $request->request_form_name,
+            'request_form_upload' => $request->request_form_up,
+            'form_number' => $request->form_number,
+            'date' => $date,
+            'type_of_test' => $request->type_of_test,
+            'specimen' => $request->specimen,
+            'report' => $repo,
+            'report_upload' => $request->report_upload_up,
+            'clinical_history_notes' => $notes,
+        ];
+
+        $histology = Pathology::where('id', $id)->update($data_path);
 //        dd($admin);
-        if ($histology->id) {
-            return redirect('histology')->with('success', trans('histology updated'));
+        if ($histology) {
+            return redirect('pathology')->with('success', trans('histology updated'));
         } else {
-            return redirect('histology')->withInput()->with('error', trans('histology not updated'));
+            return redirect('pathology')->withInput()->with('error', trans('histology not updated'));
         }
     }
 
