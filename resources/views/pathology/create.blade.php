@@ -322,6 +322,16 @@
             $('.summernote-report').summernote();
 
         });
+
+        // function loadlink(){
+        //     $('.summernote-notes').summernote();
+        //     $('.summernote-report').summernote();
+        // }
+        //
+        // loadlink(); // This will run on page load
+        // setInterval(function(){
+        //     loadlink() // this will run after every 5 seconds
+        // }, 5000);
     </script>
 
 @stop
