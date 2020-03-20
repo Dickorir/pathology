@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Update Pathology
+    Update Cancer Record
     @parent
 @stop
 
@@ -30,7 +30,7 @@
                 </li> -->
 
                 <li class="breadcrumb-item active">
-                    <strong>Update Pathology</strong>
+                    <strong>Update Cancer Record</strong>
                 </li>
             </ol>
         </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="ibox-content">
 
-                        <form class="m-t" role="form"  method="POST" action="{{ route('pathology.update', $pathology->id) }}"  enctype="multipart/form-data">
+                        <form class="m-t" role="form"  method="POST" action="{{ route('cancerRecord.update', $pathology->id) }}"  enctype="multipart/form-data">
                             @csrf
                             <div id="wizard">
 
@@ -85,10 +85,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Gender</label>
-                                                <select class="form-control m-b" name="gender">
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="other">Other</option>
+                                                <select name="gender" id="gender" class="form-control m-b required">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="Male" @if($pathology->gender === 'Male') selected="selected" @endif >Male</option>
+                                                    <option value="Female" @if($pathology->gender === 'Female') selected="selected" @endif >Female</option>
+                                                    <option value="Other" @if($pathology->gender === 'Other') selected="selected" @endif >Other</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -193,6 +194,20 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cancer Type <span class="text-danger">*</span></label>
+                                                <input name="cancer_type" type="text" value="{{ old('cancer_type', $pathology->cancer_type) }}" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Cancer Stage</label>
+                                                <select class="form-control m-b" name="cancer_stage">
+                                                    <option value="">Select Stage</option>
+                                                    <option value="1" @if($pathology->cancer_stage === '1') selected="selected" @endif>stage 1</option>
+                                                    <option value="2" @if($pathology->cancer_stage === '2') selected="selected" @endif>stage 2</option>
+                                                    <option value="3" @if($pathology->cancer_stage === '3') selected="selected" @endif>stage 3</option>
+                                                    <option value="4" @if($pathology->cancer_stage === '4') selected="selected" @endif>stage 4</option>
+                                                </select>
+                                            </div>
                                             <div class="form-group">
                                                 <label>Report Upload <span class="text-danger">*</span></label>
                                                 <span id="ona" style="" ><img id="front" alt="front image" src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" class="img-responsive" style="max-height:200px;min-height:200px"/></span>

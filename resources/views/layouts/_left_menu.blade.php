@@ -6,7 +6,7 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
 {{--                    <img alt="image" class="rounded-circle" src="img/profile_small.jpg"/>--}}
-                    PATHOLOGY
+                    CANCER RECORDS
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="block m-t-xs font-bold">{{ Auth::user()->name ?? 'Not logged in' }}</span>
                         <span class="text-muted text-xs block">{{ Auth::user()->name ?? 'Not logged in' }} <b class="caret"></b></span>
@@ -33,11 +33,11 @@
                 </div>
             </li>
 
-            <li {!! (Request::is('pathology') || Request::is('pathology/add') ? 'class="active"' : '') !!}>
-                <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Pathology </span><span class="fa arrow"></span></a>
+            <li {!! (Request::is('cancer-records') || Request::is('cancer-record/add') ? 'class="active"' : '') !!}>
+                <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Cancer Records </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li {!! (Request::is('pathology')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/pathology') }}">View Pathology</a></li>
-                    <li {!! (Request::is('pathology/add')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/pathology/add')  }}">Add Pathology</a></li>
+                    <li {!! (Request::is('cancer-records')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/cancer-records') }}">View Cancer Records</a></li>
+                    <li {!! (Request::is('cancer-record/add')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/cancer-record/add')  }}">Add Cancer Record</a></li>
                 </ul>
             </li>
 

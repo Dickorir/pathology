@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Create Pathology
+    Create Cancer Record
     @parent
 @stop
 
@@ -30,7 +30,7 @@
                 </li> -->
 
                 <li class="breadcrumb-item active">
-                    <strong>Create new Pathology</strong>
+                    <strong>Create new Cancer Record</strong>
                 </li>
             </ol>
         </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="ibox-content">
 
-                        <form class="m-t" role="form"  method="POST" action="{{ route('pathology.store') }}"  enctype="multipart/form-data">
+                        <form class="m-t" role="form"  method="POST" action="{{ route('cancerRecord.store') }}"  enctype="multipart/form-data">
                             @csrf
                             <div id="wizard">
 
@@ -193,6 +193,19 @@
                                                 </div>
                                         </div>
                                         <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cancer Type <span class="text-danger">*</span></label>
+                                                <input name="cancer_type" type="text" placeholder="Cancer Type" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Cancer Stage</label>
+                                                <select class="form-control m-b" name="cancer_stage">
+                                                    <option value="1">stage 1</option>
+                                                    <option value="2">stage 2</option>
+                                                    <option value="3">stage 3</option>
+                                                    <option value="4">stage 4</option>
+                                                </select>
+                                            </div>
                                             <div class="form-group">
                                                 <label>Report Upload <span class="text-danger">*</span></label>
                                                 <span id="ona" style="display: none" ><img id="front" alt="front image" class="img-responsive" style="max-height:200px;min-height:200px"/></span>

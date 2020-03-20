@@ -19,9 +19,9 @@ class PatientController extends Controller
         return view('pathology.patients', compact('patients'));
     }
 
-    public function pathology()
+    public function cancerRecord()
     {
-        $pathologies = Pathology::with(['patient'])->orderBy('created_at')->paginate(5);
+        $pathologies = Pathology::with(['patient'])->orderBy('created_at')->get();
         $pathologies_count = Pathology::count();
 //        dd($pathologies_count);
         return view('pathology.index', compact('pathologies','pathologies_count'));
@@ -59,9 +59,9 @@ class PatientController extends Controller
         event(new Registered($info = $this->create_info($request->all())));
 
         if ($info) {
-            return redirect('pathology')->with('success', trans('Pathology created'));
+            return redirect('pathology')->with('success', trans('Cancer Record created'));
         } else {
-            return redirect('pathology')->withInput()->with('error', trans('Pathology not created'));
+            return redirect('pathology')->withInput()->with('error', trans('Cancer Record not created'));
         }
     }
 
@@ -101,12 +101,14 @@ class PatientController extends Controller
             'report' => $repo,
             'report_upload' => $data['report_upload_up'],
             'clinical_history_notes' => $notes,
+            'cancer_type' => $request->cancer_type ?? "",
+            'cancer_stage' => $request->cancer_stage ?? "",
         ];
 
 //        dd($data_path);
         $pathology = Pathology::create($data_path);
 
-        LogActivity::addToLog('Pathology Request form:'.$pathology->request_form_name.'('.$pathology->id.') for '.$patient->name.'('.$patient->id.') info added Successfully');
+        LogActivity::addToLog('Cancer Record Request form:'.$pathology->request_form_name.'('.$pathology->id.') for '.$patient->name.'('.$patient->id.') info added Successfully');
 
         return $pathology->id;
     }
@@ -184,7 +186,7 @@ class PatientController extends Controller
     public function uploadForm($request, $id=null)
     {
 //        dd($id, 'ups');
-        $slug = str_slug('KNhH_');
+        $slug = str_slug('KNH_');
         $fileName = null;
 
         //check if image exist
@@ -224,12 +226,7 @@ class PatientController extends Controller
 
         return null;
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\patient  $patient
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Pathology $pathology, $id)
     {
         $pathology = $pathology->with(['patient'])->where('id', '=', $id)->first();
@@ -237,12 +234,6 @@ class PatientController extends Controller
         return view('pathology.show', compact('pathology'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\patient  $patient
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Pathology $pathology, $id)
     {
         $pathology = $pathology->with(['patient'])->where('id', '=', $id)->first();
@@ -299,14 +290,16 @@ class PatientController extends Controller
             'report' => $repo,
             'report_upload' => $request->report_upload_up,
             'clinical_history_notes' => $notes,
+            'cancer_type' => $request->cancer_type ?? "",
+            'cancer_stage' => $request->cancer_stage ?? "",
         ];
 
         $histology = Pathology::where('id', $id)->update($data_path);
 //        dd($admin);
         if ($histology) {
-            return redirect('pathology')->with('success', trans('histology updated'));
+            return redirect('pathology')->with('success', trans('Cancer Record updated'));
         } else {
-            return redirect('pathology')->withInput()->with('error', trans('histology not updated'));
+            return redirect('pathology')->withInput()->with('error', trans('Cancer Record not updated'));
         }
     }
 

@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Pathology
+    Cancer Records
     @parent
 @stop
 
@@ -57,7 +57,7 @@
                     <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ url('/') }}">Pathology</a>
+                    <a href="{{ url('/') }}">Cancer Record</a>
                 </li>
 
                 <li class="breadcrumb-item active">
@@ -90,7 +90,7 @@
                                     <span class="">Report form</span><br>
                                     <input type="checkbox" id="zoomCheck2" name="form_rep">
                                     <label for="zoomCheck2">
-                                        <img src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" alt="Upload form" style="width: 200px;">
+                                        <img src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" alt="Upload form" style="width: 200px;">
                                     </label>
                                 </div>
 
@@ -98,7 +98,7 @@
                             <div class="col-md-7">
 
                                 <h2 class="font-bold m-b-xs">
-                                    Pathology Info
+                                    Cancer Record Info
                                     {{--                                    {{ $pathology->patient->name }}--}}
                                 </h2>
                                 <hr>
@@ -108,6 +108,10 @@
                                     <dd> {{ $pathology->type_of_test ?? 'None' }}</dd>
                                     <dt>Specimen</dt>
                                     <dd> {{ $pathology->specimen ?? 'None' }}</dd>
+                                    <dt>Cancer Type</dt>
+                                    <dd> {{ $pathology->cancer_type ?? 'None' }}</dd>
+                                    <dt>Cancer Stage</dt>
+                                    <dd> {{ $pathology->cancer_stage ?? 'None' }}</dd>
                                     <dt>Request Form Name</dt>
                                     <dd> {{ $pathology->request_form_name ?? 'None' }}</dd>
                                     <dt>Request Form Number</dt>
@@ -147,7 +151,7 @@
                             <span class="float-right">
                                 {{ date('D-d-M-Y') }}
                             </span>
-                        Histology
+                        Cancer Records Centre
                     </div>
                 </div>
 
