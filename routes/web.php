@@ -39,6 +39,16 @@ Route::group(['middleware' => ['auth']], function() {
 // patients
     Route::get('/patients', 'PatientController@index')->name('patients');
 
+// reports routes
+    Route::get('/general-report', 'ReportController@generalReport')->name('generalReport');
+    Route::get('/general-year-total-pple/{id}', 'ReportController@generalYearTotal');
+    Route::get('/general-graph/{id}', 'ReportController@generalGraph')->name('generalGraph');
+    Route::get('/general-graph', 'ReportController@generalGraph')->name('generalGraph1');
+    Route::post('/general-graph', 'ReportController@generalGraphPost')->name('generalGraph1');
+    Route::get('/general-people-year', 'ReportController@peopleYear')->name('peopleYear');
+    Route::get('/general-people-year-all', 'ReportController@peopleYearAll')->name('peopleYearAll');
+    Route::any('/cancer/year', 'ReportController@cancerYear')->name('cancerYear');
+
 // cancer-records
     Route::get('/cancer-records', 'PatientController@cancerRecord')->name('cancerRecord');
     Route::get('/cancer-record/add', 'PatientController@create')->name('cancerRecord.create');
@@ -49,23 +59,3 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::get('logActivity', 'HomeController@logActivity');
-
-
-// students
-Route::get('/students', 'StudentController@index')->name('students');
-Route::get('/student/add', 'StudentController@create')->name('student.create');
-Route::post('/student/add', 'StudentController@store')->name('student.store');
-Route::get('student/{admin}/edit', 'StudentController@edit')->name('student.edit');
-Route::post('student/update', 'StudentController@create')->name('student.update');
-Route::get('student/{admin}/delete', 'StudentController@delete')->name('student.delete');
-
-
-// marks
-Route::get('/marks', 'StudentMarksController@index')->name('marks');
-Route::get('/mark/add', 'StudentMarksController@create')->name('mark.create');
-Route::post('/mark/add', 'StudentMarksController@store')->name('mark.store');
-Route::get('mark/{admin}/edit', 'StudentMarksController@edit')->name('mark.edit');
-Route::post('mark/{admin}/update', 'StudentMarksController@update')->name('mark.update');
-Route::get('mark/{admin}/delete', 'StudentMarksController@delete')->name('mark.delete');
-Route::any('mark/search', 'StudentMarksController@search')->name('mark.search');
-Route::any('mark/add/select', 'StudentMarksController@create')->name('student.select');

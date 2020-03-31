@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KNH PATHOLOGY | Login</title>
+    <title>CANCER CENTER | Login</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}">
@@ -24,7 +24,7 @@
             <!-- <h1 class="logo-name">LP</h1> -->
 
         </div>
-        <h3>Welcome to KNH PATHOLOGY </h3>
+        <h3>Welcome to KNH CANCER CENTER </h3>
         <p>Login in.</p>
         @include('notifications')
         <form class="m-t" role="form" method="POST" action="{{ route('login') }}">

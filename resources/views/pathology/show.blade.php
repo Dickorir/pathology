@@ -114,7 +114,7 @@
                                     <dd> {{ $pathology->cancer_stage ?? 'None' }}</dd>
                                     <dt>Request Form Name</dt>
                                     <dd> {{ $pathology->request_form_name ?? 'None' }}</dd>
-                                    <dt>Request Form Number</dt>
+                                    <dt>Lab Number</dt>
                                     <dd> {{ $pathology->form_number ?? 'None' }}</dd>
                                     <dt>Date</dt>
                                     <dd> {{ $pathology->date ?? 'None' }}</dd>

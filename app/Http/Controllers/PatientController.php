@@ -59,9 +59,9 @@ class PatientController extends Controller
         event(new Registered($info = $this->create_info($request->all())));
 
         if ($info) {
-            return redirect('pathology')->with('success', trans('Cancer Record created'));
+            return redirect('cancer-records')->with('success', trans('Cancer Record created'));
         } else {
-            return redirect('pathology')->withInput()->with('error', trans('Cancer Record not created'));
+            return redirect('cancer-records')->withInput()->with('error', trans('Cancer Record not created'));
         }
     }
 
@@ -101,8 +101,8 @@ class PatientController extends Controller
             'report' => $repo,
             'report_upload' => $data['report_upload_up'],
             'clinical_history_notes' => $notes,
-            'cancer_type' => $request->cancer_type ?? "",
-            'cancer_stage' => $request->cancer_stage ?? "",
+            'cancer_type' => $data['cancer_type'] ?? "",
+            'cancer_stage' => $data['cancer_stage'] ?? "",
         ];
 
 //        dd($data_path);
@@ -297,9 +297,9 @@ class PatientController extends Controller
         $histology = Pathology::where('id', $id)->update($data_path);
 //        dd($admin);
         if ($histology) {
-            return redirect('pathology')->with('success', trans('Cancer Record updated'));
+            return redirect('cancer-records')->with('success', trans('Cancer Record updated'));
         } else {
-            return redirect('pathology')->withInput()->with('error', trans('Cancer Record not updated'));
+            return redirect('cancer-records')->withInput()->with('error', trans('Cancer Record not updated'));
         }
     }
 

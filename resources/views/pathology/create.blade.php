@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Age <span class="text-danger">*</span></label>
-                                                <input name="age" required type="text" placeholder="Age" class="form-control">
+                                                <input name="age" required type="number" placeholder="Age" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Gender</label>
@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Village</label>
-                                                <input name="village" type="text" placeholder="addressillage" class="form-control">
+                                                <input name="village" type="text" placeholder="village" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Location</label>
@@ -146,8 +146,8 @@
                                                 <input name="request_form_name" required type="text" placeholder="Form Name" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label>Form Number </label>
-                                                <input name="form_number" type="text" placeholder="Form Number" class="form-control">
+                                                <label>Lab Number </label>
+                                                <input name="form_number" type="text" placeholder="Lab Number" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">

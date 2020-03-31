@@ -40,72 +40,11 @@
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-3">
-                <div class="ibox ">
-                    <div class="ibox-content">
-                        <h1 class="no-margins">909</h1>
-                        <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
-                        <small>Total Schools</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-12">
                 <div class="ibox">
                     @include('notifications')
                     <div class="ibox-title">
-                        <h5>Pathology </h5>
-                        <div class="ibox-tools" style="margin-top: -8px;">
-                            <a href="{{ url('pathology/add') }}" class="btn btn-primary">
-                                Add <i class="fa fa-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-title">
-                        <div class="float-right">
-                            <form id="admin_search_form" class="form-inline pull-right" action="{{url('admin/search')}}"
-                                  method="POST" role="search">
-                                {{ csrf_field() }}
-                                <div class="input-group" style="margin-top: -10px">
-                                    <input id="admin_search_input" type="text" class="form-control" name="q" required
-                                           placeholder="Search admin" style="width:150px;">
-                                    <span class="input-group-btn">
-                                        <button id="admin_search" type="submit" class="btn btn-custom btn-md btn-info" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
-                                        <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-
-                            <script type="text/javascript">
-                                $(document).ready(function(){
-                                    $("#admin_search_input").bind("keyup change", function(event) {
-                                    // $("#admin_search_input").click(function(event){
-                                        event.preventDefault();
-
-                                        jQuery.support.cors = true;
-                                        $.ajax({
-                                            url: '/admin/search',
-                                            method:"POST",
-                                            data:$('#admin_search_form').serialize(),
-                                            beforeSend:function(){
-                                                //
-                                            },
-                                            success:function(data){
-                                                $('#admi').html(data.search);
-                                            },
-                                            error: function (data) {
-                                                alert('Ooops something went wrong!');
-                                            },
-                                            complete : function (data){
-                                                //
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
-                        </div>
+                        <h5>Patients </h5>
                     </div>
                     {{--<div class="mt-3"></div>--}}
                     <div id="admi">
@@ -118,7 +57,6 @@
                                     <th>Name</th>
                                     <th>Age</th>
                                     <th>Gender</th>
-                                    <th>action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -129,12 +67,6 @@
                                         <td class="text-capitalize">{{ $patient->name ?? '' }}</td>
                                         <td class="text-capitalize">{{ $patient->age ?? '' }}</td>
                                         <td class="text-capitalize">{{ $patient->gender ?? '' }}</td>
-                                        <td>
-                                            <a href='{{ url('school',$patient->id) }}'><i class="fa fa-eye text-success" title="view patient"></i></a> &nbsp;
-                                            <a href='{{ url('school',$patient->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit school"></i></a> &nbsp;
-                                            <a href='{{ url('school',$patient->id.'/delete') }}' class="toa" id="{{ $patient->id }}"><i class="fa fa-trash-o text-danger" title="delete student"></i></a>
-                                            {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

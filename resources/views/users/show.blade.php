@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Zain Exam
+    Cancer Record
     @parent
 @stop
 

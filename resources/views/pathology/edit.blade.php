@@ -147,7 +147,7 @@
                                                 <input name="request_form_name" required type="text" value="{{ old('request_form_name', $pathology->request_form_name) }}" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label>Form Number </label>
+                                                <label>Lab Number </label>
                                                 <input name="form_number" type="text" value="{{ old('form_number', $pathology->form_number) }}" class="form-control">
                                             </div>
                                         </div>

@@ -44,8 +44,22 @@
             <li {!! (Request::is('patients')  ? 'class="active"' : '') !!}>
                 <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Patients </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li class="active"><a class="nav-link" href="{{ url('/patients') }}">View Patients</a></li>
+                    <li class="active"><a class="nav-link" href="{{ url('/patients') }}">Patients</a></li>
                 </ul>
+            </li>
+
+            <li {!! (Request::is('report')  ? 'class="active"' : '') !!}>
+                <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Report </span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="active"><a class="nav-link" href="{{ url('/general-report') }}">General</a></li>
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li class="active"><a class="nav-link" href="{{ url('/general-people-year') }}">Cancer people against year</a></li>
+                </ul>
+                <!-- <ul class="nav nav-second-level collapse">
+                    <li class="active"><a class="nav-link" href="{{ url('/general-people-year-all') }}">All Cancer people against year</a></li>
+                </ul> -->
+
             </li>
             <li>
                 <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Admin </span><span class="fa arrow"></span></a>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
     <!-- Sweet Alert -->
     <link rel="stylesheet" href="{{ asset('css/plugins/sweetalert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins/dataTables/datatables.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 @stop
@@ -63,45 +64,47 @@
                         </div>
                     </div>
 
-                    <div class="ibox-content table-responsive">
-                        <table class="table table-striped table-bordered table-hover patho " >
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>patient_id</th>
-                                <th>hospital</th>
-                                <th>request_form_name</th>
-                                <th>date</th>
-                                <th>type_of_test</th>
-                                <th>specimen</th>
-                                <th>cancer_type</th>
-                                <th>cancer_stage</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @php $i = 1;@endphp
-                            @foreach($pathologies as $pathology)
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover patho " >
+                                <thead>
                                 <tr>
-                                    <td class="text-center">{{ $i++ }}</td>
-                                    <td class="text-capitalize">{{ $pathology->patient->name ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->hospital ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->request_form_name ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->date ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->type_of_test ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->specimen ?? '' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->cancer_type ?? '-' }}</td>
-                                    <td class="text-capitalize">{{ $pathology->cancer_stage ?? '-' }}</td>
-                                    <td>
-                                        <a href='{{ url('cancer-record',$pathology->id) }}'><i class="fa fa-eye text-success" title="view cancer-record"></i></a> &nbsp;
-                                        <a href='{{ url('cancer-record',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
-                                        <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer-record"></i></a>
-                                        {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
-                                    </td>
+                                    <th>#</th>
+                                    <th>patient_id</th>
+                                    <th>hospital</th>
+                                    <th>request_form_name</th>
+                                    <th>date</th>
+                                    <th>type_of_test</th>
+                                    <th>specimen</th>
+                                    <th>cancer_type</th>
+                                    <th>cancer_stage</th>
+                                    <th>Action</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @php $i = 1;@endphp
+                                @foreach($pathologies as $pathology)
+                                    <tr>
+                                        <td class="text-center">{{ $i++ }}</td>
+                                        <td class="text-capitalize">{{ $pathology->patient->name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->hospital ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->request_form_name ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->date ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->type_of_test ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->specimen ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->cancer_type ?? '-' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->cancer_stage == null ? '-' : 'Stage '.$pathology->cancer_stage }}</td>
+                                        <td>
+                                            <a href='{{ url('cancer-record',$pathology->id) }}'><i class="fa fa-eye text-success" title="view cancer-record"></i></a> &nbsp;
+                                            <a href='{{ url('cancer-record',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
+                                            {{-- <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer-record"></i></a>--}}
+                                            {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,10 +176,39 @@
 
     <script>
         $(document).ready(function (){
-            $('.patho').DataTable({
+            $('.pathos').DataTable({
                 "scrollY": "400px",
                 "scrollCollapse": true
             });
         });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.patho').DataTable({
+                pageLength: 10,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
     </script>
 @stop
