@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
     <!-- Sweet Alert -->
     <link rel="stylesheet" href="{{ asset('css/plugins/sweetalert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins/dataTables/datatables.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 @stop
@@ -50,7 +51,7 @@
                     <div id="admi">
                         <div class="ibox-content table-responsive">
 
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered table-hover pathos " >
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -60,7 +61,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php $i = ($patients->currentpage()-1)* $patients->perpage() + 1;@endphp
+                                @php $i = 1;@endphp
                                 @foreach($patients as $patient)
                                     <tr>
                                         <td class="text-center">{{ $i++ }}</td>
@@ -71,9 +72,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pull-right">
-                                {{ $patients->links() }}
-                            </div>
 
                         </div>
                     </div>
@@ -89,6 +87,8 @@
     <script src="/js/plugins/toastr/toastr.min.js"></script>
     <!-- Sweet alert -->
     <script src="/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -140,5 +140,35 @@
 
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.pathos').DataTable({
+                pageLength: 10,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
     </script>
 @stop

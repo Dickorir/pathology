@@ -75,34 +75,6 @@
                                 </div>
                             </form>
 
-                            <script type="text/javascript">
-                                $(document).ready(function(){
-                                    $("#view-report").click(function(event){
-                                        event.preventDefault();
-
-                                        var id = $('#search_input').val();
-                                        // alert(id);
-
-                                        $.ajax({
-                                            url: '/general-graph',
-                                            method:"POST",
-                                            data:$('#search_form').serialize(),
-                                            beforeSend:function(){
-                                                //
-                                            },
-                                            success:function(data){
-                                                arasa(data.cancer, data.cancer_type);
-                                            },
-                                            error: function (data) {
-                                                alert('Ooops something went wrong!');
-                                            },
-                                            complete : function (data){
-                                                //
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
 
@@ -114,7 +86,7 @@
             <div class="col-lg-8">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Line Chart </h5>
+                        <h5>Bar Chart </h5>
                     </div>
                     <div class="ibox-content">
                         <div>
@@ -160,26 +132,33 @@
 
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
-            $.ajax({
-                url: '/general-graph',
-                method:"GET",
-                data:{},
-                beforeSend:function(){
-                    //
-                },
-                success:function(data){
-                    arasa(data.cancer, data.cancer_type);
-                },
-                error: function (data) {
-                    alert('Ooops something went wrong!');
-                },
-                complete : function (data){
-                    //
-                }
-            });
+            $("#view-report").click(function(event){
+                event.preventDefault();
 
+                var id = $('#search_input').val();
+                // alert(id);
+
+                $.ajax({
+                    url: '/general-graph',
+                    method:"POST",
+                    data:$('#search_form').serialize(),
+                    beforeSend:function(){
+                        //
+                    },
+                    success:function(data){
+                        arasa(data.cancer, data.cancer_type);
+                    },
+                    error: function (data) {
+                        alert('Ooops something went wrong!');
+                    },
+                    complete : function (data){
+                        //
+                    }
+                });
+            });
         });
     </script>
     <script>
@@ -198,7 +177,7 @@
 
             var ctx = canvas.getContext('2d');
             var config = {
-                    type: 'line',
+                    type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{

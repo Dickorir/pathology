@@ -12,9 +12,17 @@ use Illuminate\Support\Facades\File;
 
 class PatientController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:cancer-record');
+        $this->middleware('permission:cancer-create', ['only' => ['create','store']]);
+        $this->middleware('permission:cancer-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:cancer-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
-        $patients = Patient::orderBy('created_at')->paginate(5);
+        $patients = Patient::orderBy('created_at')->get();
 //        dd($patients);
         return view('pathology.patients', compact('patients'));
     }
@@ -303,14 +311,15 @@ class PatientController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\patient  $patient
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pathology $pathology)
+    public function destroy($id)
     {
-        //
+        $pathology = Pathology::with(['patient'])->where('id', $id)->first();
+//        dd($pathology->patient->id);
+
+        $lender = Patient::destroy($pathology->patient->id);
+        $lender = Pathology::destroy($id);
+//        dd($admin);
+
+//        dd($id);
     }
 }

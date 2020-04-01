@@ -49,13 +49,13 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'tel' => 'required|max:255|unique:users',
-            'password' => 'required|same:confirm-password',
+//            'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
 
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        $input['password'] = Hash::make('1234');
 
 
         $user = User::create($input);
@@ -110,14 +110,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'tel' => 'required|max:255|unique:users,tel,'.$id,
-            'password' => 'same:confirm-password',
+//            'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
 
 
         $input = $request->all();
         if(!empty($input['password'])){
-            $input['password'] = Hash::make($input['password']);
+            $input['password'] = Hash::make('1234');
         }else{
             $input = array_except($input,array('password'));
         }

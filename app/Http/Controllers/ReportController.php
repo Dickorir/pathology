@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:view-report');
+    }
     public function generalReport()
     {
         $pathologies = Pathology::with(['patient'])->orderBy('created_at')->get();
@@ -34,6 +38,11 @@ class ReportController extends Controller
 //        $cancer_type = 'blood';
 //        $pathology = Pathology::with(['patient'])->groupBy('cancer_type')->select('cancer_type', DB::raw('count(*) as total'))->get();
         return view('report.peopleYear', compact( 'cancer_types'));
+    }
+    public function peopleYearGraph()
+    {
+        $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
+        return view('report.peopleYearGraph', compact( 'cancer_types'));
     }
 
     public function generalGraph($id = null)
@@ -199,7 +208,7 @@ class ReportController extends Controller
             $cancer['jsonarray'] = $main_array;
 
         }
-        dd($cancer);
+//        dd($cancer);
 
         if ($request->ajax()) {
             return response()->json([

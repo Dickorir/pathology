@@ -24,8 +24,8 @@
             <!-- <h1 class="logo-name">LP</h1> -->
 
         </div>
-        <h3>Welcome to KNH PATHOLOGY </h3>
-        <p>Enter you Email or Phone Number to get One Time Password (OTP)</p>
+        <h3>Welcome to KNH/ UON Department of Pathology </h3>
+        <p>Enter you Phone Number to get One Time Password (OTP)</p>
         @include('notifications')
         <form class="m-t" role="form" method="POST" action="{{ route('get_otp') }}">
             @csrf

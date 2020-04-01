@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/general-graph', 'ReportController@generalGraph')->name('generalGraph1');
     Route::post('/general-graph', 'ReportController@generalGraphPost')->name('generalGraph1');
     Route::get('/general-people-year', 'ReportController@peopleYear')->name('peopleYear');
+    Route::get('/general-people-year-graph', 'ReportController@peopleYearGraph')->name('peopleYearGraph');
     Route::get('/general-people-year-all', 'ReportController@peopleYearAll')->name('peopleYearAll');
     Route::any('/cancer/year', 'ReportController@cancerYear')->name('cancerYear');
 
@@ -56,6 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('cancer-record/{id}', 'PatientController@show')->name('cancerRecord.show');
     Route::get('cancer-record/{id}/edit', 'PatientController@edit')->name('cancerRecord.edit');
     Route::post('cancer-record/{id}/update', 'PatientController@update')->name('cancerRecord.update');
+    Route::get('cancer-record/{id}/delete', 'PatientController@destroy')->name('cancerRecord.delete');
 });
 
 Route::get('logActivity', 'HomeController@logActivity');

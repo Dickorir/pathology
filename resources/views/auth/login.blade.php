@@ -24,7 +24,7 @@
             <!-- <h1 class="logo-name">LP</h1> -->
 
         </div>
-        <h3>Welcome to KNH CANCER CENTER </h3>
+        <h3>Welcome to KNH/ UON Department of Pathology </h3>
         <p>Login in.</p>
         @include('notifications')
         <form class="m-t" role="form" method="POST" action="{{ route('login') }}">

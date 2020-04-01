@@ -17,10 +17,11 @@ class PermissionTableSeeder extends Seeder
             'role-create',
             'role-edit',
             'role-delete',
-            'pathology-list',
-            'pathology-create',
-            'pathology-edit',
-            'pathology-delete',
+            'cancer-record',
+            'cancer-create',
+            'cancer-edit',
+            'cancer-delete',
+            'view-report',
         ];
 
 

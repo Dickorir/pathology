@@ -97,7 +97,7 @@
                                         <td>
                                             <a href='{{ url('cancer-record',$pathology->id) }}'><i class="fa fa-eye text-success" title="view cancer-record"></i></a> &nbsp;
                                             <a href='{{ url('cancer-record',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
-                                            {{-- <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer-record"></i></a>--}}
+                                            <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer record"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>
                                     </tr>
@@ -132,7 +132,7 @@
                 var id = element.attr("id");
 
                 swal({
-                        title: "Are you sure to delete this Admin?",
+                        title: "Are you sure to delete this Record?",
                         text: "You will not be able to recover this data!",
                         type: "warning",
                         showCancelButton: true,
@@ -146,7 +146,7 @@
                     function() {
                         $.ajax({
                             type: "GET",
-                            url: "/student/"+id+"/delete",
+                            url: "/cancer-record/"+id+"/delete",
                             data: id,
                             success:function (data) {
                                 swal({
