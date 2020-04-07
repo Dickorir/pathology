@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ asset('css/plugins/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/plugins/datapicker/datepicker3.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins/daterangepicker/daterangepicker-bs3.css') }}">
+
 @stop
 {{-- Page content --}}
 @section('content')
@@ -46,18 +49,6 @@
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#" class="dropdown-item">Config option 1</a>
-                                </li>
-                                <li><a href="#" class="dropdown-item">Config option 2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
                             </a>
                         </div>
                     </div>
@@ -245,8 +236,23 @@
     <!-- Input Mask-->
     <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
 
+    <!-- Date range use moment.js same as full calendar plugin -->
+    <script src="{{ asset('js/plugins/fullcalendar/moment.min.js') }}"></script>
+
+    <!-- Date range picker -->
+    <script src="{{ asset('js/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
     <!-- SUMMERNOTE -->
     <script src="{{ asset('js/plugins/summernote/summernote-bs4.js') }}"></script>
+    <script>
+        var mem = $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+    </script>
     <script>
         $(document).ready(function(){
             $("#wizard").steps();

@@ -91,6 +91,7 @@
                                                 //
                                             },
                                             success:function(data){
+                                                console.log(data.cancer);
                                                 arasa(data.cancer, data.cancer_type);
                                             },
                                             error: function (data) {
@@ -192,6 +193,8 @@
             var labels = jsonfile.jsonarray.map(function (e) {
                 return e.year;
             });
+
+            console.log(labels);
             var data = jsonfile.jsonarray.map(function (e) {
                 return e.total;
             });

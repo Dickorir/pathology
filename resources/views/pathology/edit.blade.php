@@ -210,7 +210,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Report Upload <span class="text-danger">*</span></label>
-                                                <span id="ona" style="" ><img id="front" alt="front image" src="{{ asset('uploads/request_form_uploads/'.$pathology->request_form_upload) }}" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
+                                                <span id="ona" style="" ><img id="front" alt="front image" src="{{ asset('uploads/report_uploads/'.$pathology->report_upload) }}" class="img-responsive" style="max-height:200px;min-height:200px"/></span>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="logo" name="report_upload" onchange="document.getElementById('front').src = window.URL.createObjectURL(this.files[0]);$('#drop').hide();$('#ona').show();">
                                                     <label for="logo" class="custom-file-label">Choose file...</label>

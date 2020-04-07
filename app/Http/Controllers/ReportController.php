@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pathology;
+use App\Patient;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Carbon\CarbonPeriod;
@@ -39,6 +40,12 @@ class ReportController extends Controller
 //        $pathology = Pathology::with(['patient'])->groupBy('cancer_type')->select('cancer_type', DB::raw('count(*) as total'))->get();
         return view('report.peopleYear', compact( 'cancer_types'));
     }
+    public function generalGraphCombined()
+    {
+        $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
+        return view('report.generalGraphCombined', compact( 'cancer_types'));
+    }
+
     public function peopleYearGraph()
     {
         $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
@@ -67,6 +74,7 @@ class ReportController extends Controller
         }
 
         $cancer = array('jsonarray' => $path);
+//        dd($cancer);
 
         return response()->json([
             'status'=>'200',
@@ -79,6 +87,7 @@ class ReportController extends Controller
     {
         $period = CarbonPeriod::create($request->start, $request->end);
 
+//        dd($period);
 // Iterate over the period
         $dates= [];
         foreach ($period as $date) {
@@ -123,7 +132,7 @@ class ReportController extends Controller
                 $path['year'] = $year;
                 $path['total'] = 0;
             }
-            $sub_array[] = $path;
+            $sub_array[$year] = $path;
 
 //                dd($kaka,90);
 
@@ -138,6 +147,7 @@ class ReportController extends Controller
 //        }
 
         $cancer = array('jsonarray' => $sub_array);
+//        dd($cancer);
 
         return response()->json([
             'status'=>'200',
@@ -148,6 +158,7 @@ class ReportController extends Controller
 
     public function cancerYear(Request $request,$id = null)
     {
+//        dd($request, 67);
         $period = CarbonPeriod::create($request->start, $request->end);
 // Iterate over the period
         $dates= [];
@@ -164,6 +175,8 @@ class ReportController extends Controller
 //        dd($years);
 
         $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
+//      dd($cancer_types);
+        $main_array = [];
         foreach ($cancer_types as $cancer_type){
 //            dd($cancer_type);
 //        dd($years);
@@ -197,18 +210,14 @@ class ReportController extends Controller
                     $path['year'] = $year;
                     $path['total'] = 0;
                 }
-                $sub_array[] = $path;
-
-//                dd($kaka,90);
+                $sub_array[$year] = $path;
 
             }
-            $sub_array['cancer'] = $cancer_type->cancer_type;
+//            $sub_array['cancer'] = $cancer_type->cancer_type;
             $main_array[] = $sub_array;
-
-            $cancer['jsonarray'] = $main_array;
-
         }
-//        dd($cancer);
+        $cancer['jsonarray'] = $main_array;
+        dd($cancer);
 
         if ($request->ajax()) {
             return response()->json([
@@ -239,5 +248,24 @@ class ReportController extends Controller
             'cancer'=> $cancer,
             'cancer_type' => $cancer_type
         ]);
+    }
+
+    public  function cancerPatAge()
+    {
+//        $pathologies = Pathology::with(['patient' => function($query){
+//            $query->groupBy('age');
+//        }])->get();
+
+        $pathologies = Pathology::with(['patient'])->whereHas( 'patient', function($query) {
+            $query->groupBy('age');
+        })
+
+        ->select('date','cancer_type')->get();
+//        $this->data['emails'] = Meta::whereHasMorph('metable' , Order::class , function($query) {
+//            $query->where('user_id' , 2);
+//        })->where('key','gmail')->groupBy('value')->get();
+
+
+        dd($pathologies);
     }
 }

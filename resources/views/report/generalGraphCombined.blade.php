@@ -49,8 +49,8 @@
 
                     <div class="ibox-title">
                         <div class="float-right">
-                            <form id="search_form" class="form-inline pull-right" action="{{url('general-graph')}}"
-                                  method="GET" role="search">
+                            <form id="search_form" class="form-inline pull-right" action="{{url('general-graph-combined')}}"
+                                  method="post" role="search">
                                 {{ csrf_field() }}
                                 <div class="form-group" id="data_5" style="margin-top: -10px">
                                     <label class="font-normal">Range select</label>
@@ -142,7 +142,7 @@
                 // alert(id);
 
                 $.ajax({
-                    url: '/general-graph',
+                    url: '/general-graph-combined',
                     method:"POST",
                     data:$('#search_form').serialize(),
                     beforeSend:function(){
@@ -166,7 +166,6 @@
 
             var jsonfile = cancer;
 
-            alert('haha');
             console.log(jsonfile);
 
             var labels = jsonfile.jsonarray.map(function (e) {

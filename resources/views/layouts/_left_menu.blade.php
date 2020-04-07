@@ -58,6 +58,12 @@
                     <ul class="nav nav-second-level collapse">
                         <li class="active"><a class="nav-link" href="{{ url('/general-people-year-graph') }}">Graph - Cancer patients against year</a></li>
                     </ul>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a class="nav-link" href="{{ url('/general-graph-combined') }}">Line - All Cancer patients against year</a></li>
+                    </ul>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a class="nav-link" href="{{ url('/cancer-patients-age') }}">Cancer patients against Age</a></li>
+                    </ul>
                 <!-- <ul class="nav nav-second-level collapse">
                     <li class="active"><a class="nav-link" href="{{ url('/general-people-year-all') }}">All Cancer people against year</a></li>
                 </ul> -->

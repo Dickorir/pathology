@@ -49,13 +49,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/general-people-year-graph', 'ReportController@peopleYearGraph')->name('peopleYearGraph');
     Route::get('/general-people-year-all', 'ReportController@peopleYearAll')->name('peopleYearAll');
     Route::any('/cancer/year', 'ReportController@cancerYear')->name('cancerYear');
+    Route::get('/general-graph-combined', 'ReportController@generalGraphCombined');
+    Route::post('/general-graph-combined', 'ReportController@cancerYear');
+
+    Route::get('/cancer-patients-age', 'ReportController@cancerPatAge');
 
 // cancer-records
     Route::get('/cancer-records', 'PatientController@cancerRecord')->name('cancerRecord');
     Route::get('/cancer-record/add', 'PatientController@create')->name('cancerRecord.create');
     Route::post('/cancer-record/add', 'PatientController@store')->name('cancerRecord.store');
     Route::get('cancer-record/{id}', 'PatientController@show')->name('cancerRecord.show');
-    Route::get('cancer-record/{id}/edit', 'PatientController@edit')->name('cancerRecord.edit');
+    Route::get('cancer-record/edit/{id}', 'PatientController@edit')->name('cancerRecord.edit');
     Route::post('cancer-record/{id}/update', 'PatientController@update')->name('cancerRecord.update');
     Route::get('cancer-record/{id}/delete', 'PatientController@destroy')->name('cancerRecord.delete');
 });
