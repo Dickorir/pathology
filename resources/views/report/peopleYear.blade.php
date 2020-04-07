@@ -68,7 +68,7 @@
                                         @endforeach
                                     </select>
                                     <span class="input-group-btn">
-                                        <button id="view-report" type="submit" class="btn btn-custom btn-md btn-info" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                        <button id="view-reportt" type="submit" class="btn btn-custom btn-md btn-info" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                         <i class="fa fa-search"></i>
                                         </button>
                                     </span>

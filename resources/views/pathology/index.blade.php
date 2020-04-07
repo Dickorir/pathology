@@ -70,14 +70,14 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>patient_id</th>
-                                    <th>hospital</th>
-                                    <th>request_form_name</th>
-                                    <th>date</th>
-                                    <th>type_of_test</th>
-                                    <th>specimen</th>
-                                    <th>cancer_type</th>
-                                    <th>cancer_stage</th>
+                                    <th>Patient Name</th>
+                                    <th>Hospital</th>
+                                    <th>Request Form</th>
+                                    <th>Date</th>
+                                    <th>Type Of Test</th>
+                                    <th>Lab No</th>
+                                    <th>Cancer Type</th>
+                                    <th>Cancer Stage</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -91,12 +91,12 @@
                                         <td class="text-capitalize">{{ $pathology->request_form_name ?? '' }}</td>
                                         <td class="text-capitalize">{{ $pathology->date ?? '' }}</td>
                                         <td class="text-capitalize">{{ $pathology->type_of_test ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $pathology->specimen ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->form_number ?? '' }}</td>
                                         <td class="text-capitalize">{{ $pathology->cancer_type ?? '-' }}</td>
                                         <td class="text-capitalize">{{ $pathology->cancer_stage == null ? '-' : 'Stage '.$pathology->cancer_stage }}</td>
                                         <td>
                                             <a href='{{ url('cancer-record',$pathology->id) }}'><i class="fa fa-eye text-success" title="view cancer-record"></i></a> &nbsp;
-                                            <a href='{{ url('cancer-record',$pathology->id.'/edit') }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
+                                            <a href='{{ url('cancer-record/edit',$pathology->id) }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
                                             <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer record"></i></a>
                                             {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
                                         </td>

@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cancer-record/add', 'PatientController@create')->name('cancerRecord.create');
     Route::post('/cancer-record/add', 'PatientController@store')->name('cancerRecord.store');
     Route::get('cancer-record/{id}', 'PatientController@show')->name('cancerRecord.show');
-    Route::get('cancer-record/{id}/edit', 'PatientController@edit')->name('cancerRecord.edit');
+    Route::get('cancer-record/edit/{id}', 'PatientController@edit')->name('cancerRecord.edit');
     Route::post('cancer-record/{id}/update', 'PatientController@update')->name('cancerRecord.update');
     Route::get('cancer-record/{id}/delete', 'PatientController@destroy')->name('cancerRecord.delete');
 });

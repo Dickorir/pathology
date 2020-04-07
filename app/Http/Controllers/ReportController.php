@@ -148,6 +148,7 @@ class ReportController extends Controller
 
     public function cancerYear(Request $request,$id = null)
     {
+//        dd($request);
         $period = CarbonPeriod::create($request->start, $request->end);
 // Iterate over the period
         $dates= [];
@@ -164,6 +165,8 @@ class ReportController extends Controller
 //        dd($years);
 
         $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
+//      dd($cancer_types);
+        $main_array = [];
         foreach ($cancer_types as $cancer_type){
 //            dd($cancer_type);
 //        dd($years);
@@ -197,18 +200,14 @@ class ReportController extends Controller
                     $path['year'] = $year;
                     $path['total'] = 0;
                 }
-                $sub_array[] = $path;
-
-//                dd($kaka,90);
+                $sub_array[$year] = $path;
 
             }
-            $sub_array['cancer'] = $cancer_type->cancer_type;
+//            $sub_array['cancer'] = $cancer_type->cancer_type;
             $main_array[] = $sub_array;
-
-            $cancer['jsonarray'] = $main_array;
-
         }
-//        dd($cancer);
+//        $cancer['jsonarray'] = $main_array;
+        dd($main_array);
 
         if ($request->ajax()) {
             return response()->json([
