@@ -77,9 +77,9 @@
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 <select class="form-control m-b" name="gender">
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="other">Other</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -172,7 +172,7 @@
                                 <h1>Report</h1>
                                 <div class="step-content" style="overflow-x: auto">
                                     <div class="row">
-                                        <div class="col-sm-6 b-r">
+                                        <div class="col-sm-6 b-r" style="display: none">
                                                 <div class="form-group">
                                                     <label>clinical_history_notes</label>
                                                     <textarea name="clinical_history_notes" class="form-control summernote-notes" placeholder="clinical_history_notes">x</textarea>
@@ -205,14 +205,14 @@
                                                     <label for="logo" class="custom-file-label">Choose file...</label>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="col-sm-12">
-
                                             <div class="form-group">
-                                                <button type="submit" class="float-right">Submit</button>
+                                                <button type="submit" class="float-right btn btn-success">Submit</button>
 
                                             </div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+
                                         </div>
                                     </div>
 

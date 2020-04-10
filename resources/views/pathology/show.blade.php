@@ -118,8 +118,8 @@
                                     <dd> {{ $pathology->form_number ?? 'None' }}</dd>
                                     <dt>Date</dt>
                                     <dd> {{ $pathology->date ?? 'None' }}</dd>
-                                    <dt>Clinical history/notes</dt>
-                                    <dd> {!! $pathology->clinical_history_notes ?? 'None' !!}</dd>
+                                    <dt class="d-none">Clinical history/notes</dt>
+                                    <dd class="d-none"> {!! $pathology->clinical_history_notes ?? 'None' !!}</dd>
                                     <dt>Hospital</dt>
                                     <dd> {{ $pathology->hospital ?? 'None' }}</dd>
 
@@ -137,8 +137,8 @@
                                 </dl>
                                 <hr>
 
-                                <dt>report</dt>
-                                <dd> {!! $pathology->report ?? 'None' !!} </dd>
+                                <dt class="d-none">report</dt>
+                                <dd class="d-none"> {!! $pathology->report ?? 'None' !!} </dd>
 
 
 

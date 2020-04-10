@@ -12,7 +12,12 @@
 
     <!-- Toastr style -->
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{ asset('css/plugins/sweetalert/sweetalert.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/plugins/dataTables/datatables.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/datapicker/datepicker3.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/daterangepicker/daterangepicker-bs3.css') }}">
 @stop
@@ -43,28 +48,36 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     @include('notifications')
-                    <div class="ibox-title">
-                        <h5 id="the-title">{{ $title ?? 'Cancer Records for total people against year on Individual Cancer' }} </h5>
+                    <div class="ibox-title the-title">
+                        <h5 id="the-title">{{ $title }} </h5>
                     </div>
 
                     <div class="ibox-title">
                         <div class="float-right">
-                            <form id="search_form" class="form-inline pull-right" action="{{url('general-graph')}}"
-                                  method="GET" role="search">
+                            <form id="search_form" class="form-inline pull-right" action="{{url('cancer-patients-age')}}"
+                                  method="POST" role="search">
                                 {{ csrf_field() }}
                                 <div class="form-group" id="data_5" style="margin-top: -10px">
-                                    <label class="font-normal">Chart select</label>
-                                    <select id="chart" name="chart" class="form-control" style="width:150px;">
+                                    <label class="font-normal">Chart</label>
+                                    <select id="chart" name="chart" class="form-control" style="width:80px;">
                                         <option value="bar">Bar</option>
                                         <option value="line">Line</option>
                                     </select>
                                 </div>
-                                <div class="form-group" id="data_5" style="margin-top: -10px;margin-left: 5px;">
-                                    <label class="font-normal">Range select</label>
-                                    <div class="input-daterange input-group" id="datepicker">
-                                        <input type="text" class="form-control-sm form-control" name="start" value="01-01-2019" />
+                                <div class="form-group" id="data_5" style="margin-top: -10px;margin-left: 30px;">
+                                    <label class="font-normal">Age</label>
+                                    <div class="input-group" id="">
+                                        <input type="text" class="form-control-sm form-control" name="startAge" value="" style="width: 50px;" />
                                         <span class="input-group-addon">to</span>
-                                        <input type="text" class="form-control-sm form-control" name="end" value="{{ date('d-m-Y') }}" />
+                                        <input type="text" class="form-control-sm form-control" name="endAge" value="" style="width: 50px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group" id="data_5" style="margin-top: -10px;margin-left: 30px;">
+                                    <label class="font-normal">Range</label>
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <input type="text" class="form-control-sm form-control" name="start" value="01-01-2019" style="width: 140px" />
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" class="form-control-sm form-control" name="end" value="{{ date('d-m-Y') }}" style="width: 140px" />
                                     </div>
                                 </div>
                                 <div class="input-group" style="margin-top: -10px">
@@ -88,12 +101,42 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+
+                    <div class="ibox-content" id="display">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover patho " >
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Age</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php $i = 1;@endphp
+                                @foreach($pathologies as $pathology)
+                                    <tr>
+                                        <td class="text-center">{{ $i++ }}</td>
+                                        <td class="text-capitalize">{{ $pathology->age ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology->total ?? '' }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-lg-8">
                 <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>Chart </h5>
+                    <div class="ibox-title ">
+                        <h5 id="the-title2">{{ $title }} </h5>
                     </div>
                     <div class="ibox-content">
                         <div>
@@ -110,12 +153,17 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <!-- put scripts gera -->
+    <script src="/js/plugins/toastr/toastr.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
     <!-- ChartJS-->
     <script type="text/javascript" src="{{ asset('js/plugins/chartJs/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/demo/chartjs-demo.js') }}"></script>
-
-    <script type="text/javascript" src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
-
     <!-- Image cropper -->
     <script type="text/javascript" src="{{ asset('js/plugins/cropper/cropper.min.js') }}"></script>
 
@@ -140,6 +188,46 @@
         });
     </script>
 
+
+    <script>
+        $(document).ready(function (){
+            $('.pathos').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.patho').DataTable({
+                pageLength: 10,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function(){
             $("#view-report").click(function(event){
@@ -149,7 +237,7 @@
                 // alert(id);
 
                 $.ajax({
-                    url: '/general-graph',
+                    url: '/cancer-patients-age',
                     method:"POST",
                     data:$('#search_form').serialize(),
                     beforeSend:function(){
@@ -157,6 +245,9 @@
                     },
                     success:function(data){
                         arasa(data.cancer, data.cancer_type);
+                        $('#display').html(data.search);
+                        $('#the-title').html(data.title);
+                        $('#the-title2').html(data.title);
                     },
                     error: function (data) {
                         alert('Ooops something went wrong!');
@@ -173,18 +264,20 @@
 
             var jsonfile = cancer;
 
-            console.log(jsonfile);
+            console.log(cancer_type);
 
             var labels = jsonfile.jsonarray.map(function (e) {
-                return e.year;
+                return e.age;
             });
             var data = jsonfile.jsonarray.map(function (e) {
                 return e.total;
             });
+            console.log(labels);
+            console.log(data);
 
             var ctx = canvas.getContext('2d');
             var config = {
-                    type: $('#chart').val(),
+                type: $('#chart').val(),
                 data: {
                     labels: labels,
                     datasets: [{

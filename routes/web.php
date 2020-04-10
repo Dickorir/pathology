@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/general-graph-combined', 'ReportController@cancerYear');
 
     Route::get('/cancer-patients-age', 'ReportController@cancerPatAge');
+    Route::post('/cancer-patients-age', 'ReportController@cancerPatAge');
 
 // cancer-records
     Route::get('/cancer-records', 'PatientController@cancerRecord')->name('cancerRecord');

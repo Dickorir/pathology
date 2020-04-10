@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\LogActivity;
+use App\Pathology;
+use App\Patient;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::count();
+        $patients = Patient::count();
+        $pathologies = Pathology::count();
+        return view('home', compact('pathologies','patients', 'users'));
     }
 
     public function logActivity()

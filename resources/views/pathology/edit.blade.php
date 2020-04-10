@@ -87,9 +87,9 @@
                                                 <label>Gender</label>
                                                 <select name="gender" id="gender" class="form-control m-b required">
                                                     <option value="">Select Gender</option>
-                                                    <option value="Male" @if($pathology->gender === 'Male') selected="selected" @endif >Male</option>
-                                                    <option value="Female" @if($pathology->gender === 'Female') selected="selected" @endif >Female</option>
-                                                    <option value="Other" @if($pathology->gender === 'Other') selected="selected" @endif >Other</option>
+                                                    <option value="Male" @if($pathology->gender == 'Male' or $pathology->gender == 'male') selected="selected" @endif >Male</option>
+                                                    <option value="Female" @if($pathology->gender == 'Female' or $pathology->gender == 'female') selected="selected" @endif >Female</option>
+                                                    <option value="Other" @if($pathology->gender == 'Other' or $pathology->gender == 'other') selected="selected" @endif >Other</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -182,15 +182,15 @@
                                 <h1>Report</h1>
                                 <div class="step-content" style="overflow-x: auto">
                                     <div class="row">
-                                        <div class="col-sm-6 b-r">
+                                        <div class="col-sm-6 b-r d-none" >
                                             <div class="form-group">
                                                 <label>clinical_history_notes</label>
-                                                <textarea name="clinical_history_notes" class="form-control summernote-notes" placeholder="clinical_history_notes">x</textarea>
+                                                <textarea name="clinical_history_notes" class="form-control summernote-notes" placeholder="clinical_history_notes">{{ old('clinical_history_notes', $pathology->clinical_history_notes) }}</textarea>
 
                                             </div>
                                             <div class="form-group">
                                                 <label>Report</label>
-                                                <textarea name="report" class="form-control summernote-report" placeholder="Report">x</textarea>
+                                                <textarea name="report" class="form-control summernote-report" placeholder="Report">{{ old('report', $pathology->report) }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -216,14 +216,14 @@
                                                     <label for="logo" class="custom-file-label">Choose file...</label>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="col-sm-12">
-
                                             <div class="form-group">
                                                 <button type="submit" class="float-right btn  btn-info">Update</button>
 
                                             </div>
+
+                                        </div>
+                                        <div class="col-sm-12">
+
                                         </div>
                                     </div>
 

@@ -33,11 +33,16 @@
                 </div>
             </li>
 
+            <li {!! (Request::is('home') || Request::is('home') ? 'class="active"' : '') !!}>
+                <a href="{{ url('home') }}"><i class="fa fa-address-card"></i> <span class="nav-label">Dashboard </span></a>
+            </li>
             <li {!! (Request::is('cancer-records') || Request::is('cancer-record/add') ? 'class="active"' : '') !!}>
                 <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Cancer Records </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li {!! (Request::is('cancer-records')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/cancer-records') }}">View Cancer Records</a></li>
-                    <li {!! (Request::is('cancer-record/add')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/cancer-record/add')  }}">Add Cancer Record</a></li>
+                    @can('cancer-create')
+                        <li {!! (Request::is('cancer-record/add')  ? 'class="active"' : '') !!}><a class="nav-link" href="{{ url('/cancer-record/add')  }}">Add Cancer Record</a></li>
+                    @endcan
                 </ul>
             </li>
 
@@ -47,28 +52,27 @@
                     <li class="active"><a class="nav-link" href="{{ url('/patients') }}">Patients</a></li>
                 </ul>
             </li>
+            @can('view-report')
                 <li {!! (Request::is('report')  ? 'class="active"' : '') !!}>
                     <a href="#"><i class="fa fa-address-card"></i> <span class="nav-label">Report </span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="active"><a class="nav-link" href="{{ url('/general-report') }}">General</a></li>
                     </ul>
-                    <ul class="nav nav-second-level collapse">
+                <!-- <ul class="nav nav-second-level collapse">
                         <li class="active"><a class="nav-link" href="{{ url('/general-people-year') }}">Line - Cancer Cancer patients against year</a></li>
-                    </ul>
+                    </ul> -->
                     <ul class="nav nav-second-level collapse">
-                        <li class="active"><a class="nav-link" href="{{ url('/general-people-year-graph') }}">Graph - Cancer patients against year</a></li>
-                    </ul>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="active"><a class="nav-link" href="{{ url('/general-graph-combined') }}">Line - All Cancer patients against year</a></li>
-                    </ul>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="active"><a class="nav-link" href="{{ url('/cancer-patients-age') }}">Cancer patients against Age</a></li>
+                        <li class="active"><a class="nav-link" href="{{ url('/general-people-year-graph') }}">Cancer distribution by year</a></li>
                     </ul>
                 <!-- <ul class="nav nav-second-level collapse">
-                    <li class="active"><a class="nav-link" href="{{ url('/general-people-year-all') }}">All Cancer people against year</a></li>
-                </ul> -->
+                        <li class="active"><a class="nav-link" href="{{ url('/general-graph-combined') }}">Line - All Cancer patients against year</a></li>
+                    </ul> -->
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a class="nav-link" href="{{ url('/cancer-patients-age') }}">Cancer distribution by Age</a></li>
+                    </ul>
 
                 </li>
+            @endcan
             @can('role-list')
                 <li>
                     <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Admin </span><span class="fa arrow"></span></a>

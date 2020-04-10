@@ -87,7 +87,6 @@ class ReportController extends Controller
     {
         $period = CarbonPeriod::create($request->start, $request->end);
 
-//        dd($period);
 // Iterate over the period
         $dates= [];
         foreach ($period as $date) {
@@ -95,6 +94,7 @@ class ReportController extends Controller
         }
 
         $dataLists  = collect( $dates )->unique();
+//        dd($dataLists);
 
         $years= [];
         foreach ($dataLists as $dataList) {
@@ -102,7 +102,7 @@ class ReportController extends Controller
         }
 //        dd($years);
 
-        $cancer_type = $request->q == null ? 'all' : $request->q;
+        $cancer_type = $request->q;
 
         foreach ($years as $year){
 
@@ -114,7 +114,11 @@ class ReportController extends Controller
 
             $pathologies = Pathology::groupBy('date','cancer_type')
                 ->whereBetween('date',[$from, $to] )
-                ->where('cancer_type', $cancer_type )
+                ->where(function ($query) use ($cancer_type) {
+                    if(isset($cancer_type)) {
+                        $query->where('cancer_type', $cancer_type);
+                    };
+                })
                 ->select('date','cancer_type', DB::raw('count(*) as total'))
                 ->get();
 
@@ -124,7 +128,7 @@ class ReportController extends Controller
             foreach ($pathologies as $pathology){
                 $path['cancer'] = $cancer_type;
                 $path['year'] = $year;
-                $path['total'] = $pathology->total;
+                $path['total'] = $pathologies->count();
             }
             if (empty($path)) {
                 // list is empty
@@ -132,20 +136,13 @@ class ReportController extends Controller
                 $path['year'] = $year;
                 $path['total'] = 0;
             }
-            $sub_array[$year] = $path;
+            $sub_array[] = $path;
 
 //                dd($kaka,90);
 
         }
 
-//        $pathology = Pathology::with(['patient'])->groupBy('cancer_type')->select('cancer_type', DB::raw('count(*) as total'))->get();
-//        return view('report.yearTotalPple', compact('pathologies','cancer_type'));
-
-//        $path = [];
-//        foreach ($pathologies as $pathology){
-//            $path[] = array('year' => date('Y', strtotime($pathology->date)), 'total' => $pathology->total );
-//        }
-
+        $cancer_type = $request->q == null ? 'all' : $request->q;
         $cancer = array('jsonarray' => $sub_array);
 //        dd($cancer);
 
@@ -217,7 +214,7 @@ class ReportController extends Controller
             $main_array[] = $sub_array;
         }
         $cancer['jsonarray'] = $main_array;
-        dd($cancer);
+//        dd($cancer);
 
         if ($request->ajax()) {
             return response()->json([
@@ -250,22 +247,136 @@ class ReportController extends Controller
         ]);
     }
 
-    public  function cancerPatAge()
+    public  function cancerPatAge(Request $request)
     {
-//        $pathologies = Pathology::with(['patient' => function($query){
-//            $query->groupBy('age');
-//        }])->get();
+        if (is_null($request->startAge) or is_null($request->endAge)){
+            return $this->cancerPatAges($request);
+        }
+//        dd($request->startAge);
+        $ages = [];
+        for ($i = $request->startAge; $i <= $request->endAge; $i++) {
+            $ages[]=$i;
+        }
 
-        $pathologies = Pathology::with(['patient'])->whereHas( 'patient', function($query) {
-            $query->groupBy('age');
-        })
+        $thecancer = null;
+        $fromDate = null;
+        $toDate = null;
+        $title = 'Cancer Distribution by age';
+        if($request->has('_token')) {
+            $thecancer = $request->q;
+            $fromDate = Carbon::parse($request->start)->startOfYear()->toDateTimeString();
+            $toDate = Carbon::parse($request->end)->endOfYear()->toDateTimeString();
+            $title = $thecancer.' Cancer Distribution by age,'.date('Y', strtotime($fromDate)).' - '.date('Y', strtotime($toDate));
+            $title = $thecancer.' Cancer Distribution by age '.$request->startAge.' to '.$request->endAge.','.date('Y', strtotime($fromDate)).' - '.date('Y', strtotime($toDate));
+        }
+        $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
 
-        ->select('date','cancer_type')->get();
-//        $this->data['emails'] = Meta::whereHasMorph('metable' , Order::class , function($query) {
-//            $query->where('user_id' , 2);
-//        })->where('key','gmail')->groupBy('value')->get();
+        foreach ($ages as $age){
+
+            $pathologies = Pathology::groupBy('age')
+                ->where(function ($query) use ($thecancer) {
+                    if(isset($thecancer)) {
+                        $query->where('cancer_type', $thecancer);
+                    };
+                })
+                ->where(function ($query) use ($fromDate,$toDate) {
+                    if(isset($fromDate) and isset($toDate)) {
+                        $query->whereBetween('date',[$fromDate, $toDate] );
+                    };
+                })
+                ->where('age',$age)
+                ->select('age', DB::raw('count(*) as total'))
+                ->get();
+
+//            dd($pathologies);
+
+            $path = [];
+            foreach ($pathologies as $pathology){
+                $path['age'] = $age;
+                $path['total'] = $pathologies->count();
+            }
+            if (empty($path)) {
+                // list is empty
+                $path['age'] = $age;
+                $path['total'] = 0;
+            }
+            $sub_array[] = $path;
+
+//                dd($kaka,90);
+
+        }
 
 
-        dd($pathologies);
+        $cancer = array('jsonarray' => $sub_array);
+//        dd($cancer);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => '200',
+                'cancer' => $cancer,
+                'cancer_type' => $thecancer == null ? 'All' : $thecancer,
+                'title' => $title,
+                'search' => view('report.partials.cancerPatAge',compact('pathologies'))->render()
+            ]);
+        }
+
+        return view('report.cancerPatientsAge', compact('pathologies','title', 'cancer_types'));
+
+//        dd($pathologies);
+    }
+    public  function cancerPatAges($request)
+    {
+        $thecancer = null;
+        $fromDate = null;
+        $toDate = null;
+        $title = 'Cancer Distribution by age';
+        if($request->has('_token')) {
+            $thecancer = $request->q;
+            $fromDate = Carbon::parse($request->start)->startOfYear()->toDateTimeString();
+            $toDate = Carbon::parse($request->end)->endOfYear()->toDateTimeString();
+            $title = $thecancer.' Cancer Distribution by age,'.date('Y', strtotime($fromDate)).' - '.date('Y', strtotime($toDate));
+        }
+
+//        dd($thecancer);
+
+        $cancer_types = Pathology::select('cancer_type')->groupBy('cancer_type')->get();
+
+        $pathologies = Pathology::groupBy('age')
+            ->where(function ($query) use ($thecancer) {
+                if(isset($thecancer)) {
+                    $query->where('cancer_type', $thecancer);
+                };
+            })
+            ->where(function ($query) use ($fromDate,$toDate) {
+                if(isset($fromDate) and isset($toDate)) {
+                    $query->whereBetween('date',[$fromDate, $toDate] );
+                };
+            })
+            ->select('age', DB::raw('count(*) as total'))
+            ->get();
+
+//        dd($pathologies);
+
+        $path = [];
+        foreach ($pathologies as $pathology){
+            $path[] = array('age' => (int)$pathology->age, 'total' => (int)$pathology->total );
+        }
+
+        $cancer = array('jsonarray' => $path);
+//        dd($cancer);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => '200',
+                'cancer' => $cancer,
+                'cancer_type' => $thecancer == null ? 'All' : $thecancer,
+                'title' => $title,
+                'search' => view('report.partials.cancerPatAge',compact('pathologies'))->render()
+            ]);
+        }
+
+        return view('report.cancerPatientsAge', compact('pathologies','title', 'cancer_types'));
+
+//        dd($pathologies);
     }
 }

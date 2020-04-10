@@ -58,6 +58,8 @@
                                     <th>Name</th>
                                     <th>Age</th>
                                     <th>Gender</th>
+                                    <th>Cancer</th>
+                                    <th>Stage</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -68,6 +70,8 @@
                                         <td class="text-capitalize">{{ $patient->name ?? '' }}</td>
                                         <td class="text-capitalize">{{ $patient->age ?? '' }}</td>
                                         <td class="text-capitalize">{{ $patient->gender ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->pathology->cancer_type ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $patient->pathology->cancer_stage ?? '' }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

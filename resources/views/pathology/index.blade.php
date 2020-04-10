@@ -96,9 +96,12 @@
                                         <td class="text-capitalize">{{ $pathology->cancer_stage == null ? '-' : 'Stage '.$pathology->cancer_stage }}</td>
                                         <td>
                                             <a href='{{ url('cancer-record',$pathology->id) }}'><i class="fa fa-eye text-success" title="view cancer-record"></i></a> &nbsp;
-                                            <a href='{{ url('cancer-record/edit',$pathology->id) }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
-                                            <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer record"></i></a>
-                                            {{--<a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>--}}
+                                            @can('cancer-edit')
+                                                <a href='{{ url('cancer-record/edit',$pathology->id) }}'><i class="fa fa-pencil-square-o text-info" title="edit cancer-record"></i></a> &nbsp;
+                                            @endcan
+                                            @can('cancer-delete')
+                                                <a href='{{ url('cancer-record',$pathology->id.'/delete') }}' class="toa" id="{{ $pathology->id }}"><i class="fa fa-trash-o text-danger" title="delete cancer record"></i></a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach

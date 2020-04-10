@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8069105b-2a6e-4e5c-a1ed-5af5a08e80dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/knhpathology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/knhpathology.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pathology.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pathology.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_29_052454_create_products_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_29_111140_create_marks_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_24_213150_add_lab_no_to_pathologies_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/_horizontal_menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_horizontal_menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/_left_menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_left_menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pathology/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pathology/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/report/peopleYear.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/peopleYear.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pathology/patients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/patients.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pathology/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pathology/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/report/peopleYearGraph.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/peopleYearGraph.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -169,23 +178,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HTML5_Full_Version" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\knhpathology\public" />
-      <recent name="C:\wamp64\www\knhpathology\public\js\plugins" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\knhpathology\public\img" />
+      <recent name="C:\laragon\www\knhpathology\resources\views\report\partials" />
       <recent name="C:\laragon\www\knhpathology\resources\views\report" />
       <recent name="C:\wamp64\www\knhpathology\resources\views\report" />
       <recent name="C:\wamp64\www\knhpathology\public\css" />
-      <recent name="C:\wamp64\www\knhpathology\public\js" />
-      <recent name="C:\wamp64\www\knhpathology\public\js\demo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\knhpathology\public" />
+      <recent name="C:\wamp64\www\knhpathology\public\js\plugins" />
     </key>
   </component>
   <component name="RunManager">
@@ -240,7 +249,12 @@
       <workItem from="1586073323518" duration="6558000" />
       <workItem from="1586153460577" duration="7480000" />
       <workItem from="1586238992831" duration="7070000" />
-      <workItem from="1586292185899" duration="8111000" />
+      <workItem from="1586292185899" duration="9676000" />
+      <workItem from="1586325210895" duration="29017000" />
+      <workItem from="1586416127639" duration="10964000" />
+      <workItem from="1586438470248" duration="7412000" />
+      <workItem from="1586502340676" duration="2048000" />
+      <workItem from="1586550492671" duration="5818000" />
     </task>
     <servers />
   </component>
@@ -254,21 +268,26 @@
   <component name="WindowStateProjectService">
     <state x="395" y="102" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583569763744" />
     <state x="395" y="102" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
-    <state x="455" y="151" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585692908829">
+    <state x="456" y="167" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586471713691">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="455" y="151" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1585692908829" />
+    <state x="456" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1586471713691" />
+    <state x="455" y="151" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586425567914">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="455" y="151" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586425567914" />
     <state x="533" y="198" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1600.827@0.27.1600.827" timestamp="1583572143498" />
     <state x="483" y="248" width="624" height="391" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1583569763744" />
     <state x="483" y="248" width="624" height="391" key="DUMP_DIALOG_DIMENSION_KEY/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
-    <state x="498" y="151" width="424" height="491" key="FileChooserDialogImpl" timestamp="1586292597025">
+    <state x="498" y="151" width="424" height="491" key="FileChooserDialogImpl" timestamp="1586504862795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="498" y="151" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586292597025" />
+    <state x="498" y="151" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586504862795" />
     <state x="583" y="198" width="424" height="491" key="FileChooserDialogImpl/0.27.1600.827@0.27.1600.827" timestamp="1583572949244" />
-    <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog" timestamp="1583574424353">
-      <screen x="0" y="27" width="1600" height="827" />
+    <state x="431" y="115" width="580" height="571" key="MultipleFileMergeDialog" timestamp="1586303931078">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="431" y="115" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1586303931078" />
     <state x="505" y="158" width="580" height="571" key="MultipleFileMergeDialog/0.27.1600.827@0.27.1600.827" timestamp="1583574424353" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1584256135655">
       <screen x="0" y="0" width="1366" height="728" />
@@ -276,22 +295,23 @@
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584256135655" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1583569763744" />
     <state x="650" y="180" width="290" height="528" key="com.intellij.database.view.ui.DbObjectDialog/0.27.1600.827@0.27.1600.827" timestamp="1583569763744" />
-    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586241165883">
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586503398285">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586241165883" />
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586503398285" />
     <state x="379" y="96" width="737" height="606" key="find.popup" timestamp="1586299704027">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="96" width="737" height="606" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586299704027" />
-    <state x="429" y="234" width="732" height="420" key="git4idea.merge.GitPullDialog" timestamp="1583754150024">
-      <screen x="0" y="27" width="1600" height="827" />
-    </state>
-    <state x="429" y="234" width="732" height="420" key="git4idea.merge.GitPullDialog/0.27.1600.827@0.27.1600.827" timestamp="1583754150024" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1585639667206">
+    <state x="366" y="182" width="630" height="370" key="git4idea.merge.GitPullDialog" timestamp="1586303887096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1585639667206" />
+    <state x="366" y="182" width="630" height="370" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586303887096" />
+    <state x="429" y="234" width="732" height="420" key="git4idea.merge.GitPullDialog/0.27.1600.827@0.27.1600.827" timestamp="1583754150024" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1586388962586">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1586388962586" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586103352866">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

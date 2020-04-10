@@ -8,6 +8,8 @@ class Pathology extends Model
 {
     public $fillable = [
         'patient_id',
+        'age',
+        'gender',
         'hospital',
         'doctor_name',
         'request_form_name',

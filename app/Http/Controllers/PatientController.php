@@ -99,6 +99,8 @@ class PatientController extends Controller
         $data_path = [
             'patient_id' => $patient->id,
             'hospital' => $data['hospital'],
+            'age' => $data['age'],
+            'gender' => $data['gender'],
             'doctor_name' => $data['doctor_name'],
             'request_form_name' => $data['request_form_name'],
             'request_form_upload' => $data['request_form_up'],
@@ -259,12 +261,18 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         $date = Carbon::createFromFormat('d/m/Y', $request->date)->toDateString();
-
-        $request_form = $this->uploadForm($request, $id);
-        $report_upload = $this->uploadReport($request, $id);
-
+        $request_form = null;
+        $report_upload = null;
+        if ($request->hasFile('request_form_upload')) {
+            $request_form = $this->uploadForm($request, $id);
+        }
+        if ($request->hasFile('report_upload')) {
+            $report_upload = $this->uploadReport($request, $id);
+        }
         $request->request->add(['request_form_up' => $request_form]); //add request
         $request->request->add(['report_upload_up' => $report_upload]); //add request
+
+//        dd($request);
 
         $repo = $this->storetext($request->report);
         $notes = $this->storetext($request->clinical_history_notes);
@@ -288,22 +296,25 @@ class PatientController extends Controller
 
         $data_path = [
             'hospital' => $request->hospital,
+            'age' => $request->age,
+            'gender' => $request->gender,
             'doctor_name' => $request->doctor_name,
             'request_form_name' => $request->request_form_name,
-            'request_form_upload' => $request->request_form_up,
             'form_number' => $request->form_number,
             'date' => $date,
             'type_of_test' => $request->type_of_test,
             'specimen' => $request->specimen,
+            'request_form_upload' => $request->request_form_up == null ? $histology->request_form_upload : $request->request_form_up ,
+            'report_upload' => $request->report_upload_up == null ? $histology->report_upload : $request->report_upload_up,
             'report' => $repo,
-            'report_upload' => $request->report_upload_up,
             'clinical_history_notes' => $notes,
             'cancer_type' => $request->cancer_type ?? "",
             'cancer_stage' => $request->cancer_stage ?? "",
         ];
+//        dd($data_path);
 
         $histology = Pathology::where('id', $id)->update($data_path);
-//        dd($admin);
+//        dd($histology);
         if ($histology) {
             return redirect('cancer-records')->with('success', trans('Cancer Record updated'));
         } else {

@@ -4,6 +4,9 @@
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
+        <div class="navbar-header mt-3">
+            <h3>KNH / UON Department of Pathology (CANCER CENTRE)</h3>
+        </div>
         <ul class="nav navbar-top-links navbar-right">
 {{--            @if(Auth::guard('admin')->check() or Auth::check())--}}
 
