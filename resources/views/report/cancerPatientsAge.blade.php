@@ -120,8 +120,8 @@
                                 @foreach($pathologies as $pathology)
                                     <tr>
                                         <td class="text-center">{{ $i++ }}</td>
-                                        <td class="text-capitalize">{{ $pathology->age ?? '' }}</td>
-                                        <td class="text-capitalize">{{ $pathology->total ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology['age'] ?? '' }}</td>
+                                        <td class="text-capitalize">{{ $pathology['total'] ?? '' }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

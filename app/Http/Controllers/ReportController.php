@@ -250,13 +250,14 @@ class ReportController extends Controller
     public  function cancerPatAge(Request $request)
     {
         if (is_null($request->startAge) or is_null($request->endAge)){
+//            dd('ya s');
             return $this->cancerPatAges($request);
         }
-//        dd($request->startAge);
         $ages = [];
         for ($i = $request->startAge; $i <= $request->endAge; $i++) {
-            $ages[]=$i;
+            $ages[]=(int)$i;
         }
+//        dd($ages);
 
         $thecancer = null;
         $fromDate = null;
@@ -288,12 +289,12 @@ class ReportController extends Controller
                 ->select('age', DB::raw('count(*) as total'))
                 ->get();
 
-//            dd($pathologies);
+//            dd($pathologies,78);
 
             $path = [];
             foreach ($pathologies as $pathology){
                 $path['age'] = $age;
-                $path['total'] = $pathologies->count();
+                $path['total'] = $pathology->total;
             }
             if (empty($path)) {
                 // list is empty
@@ -301,14 +302,16 @@ class ReportController extends Controller
                 $path['total'] = 0;
             }
             $sub_array[] = $path;
-
-//                dd($kaka,90);
-
+//            dd($sub_array,90);
         }
 
+        /*foreach ($sub_array as $subs){
+            $subs['age'];
+        }*/
 
         $cancer = array('jsonarray' => $sub_array);
-//        dd($cancer);
+        $pathologies = $sub_array;
+//        dd($pathologies);
 
         if ($request->ajax()) {
             return response()->json([
@@ -316,7 +319,7 @@ class ReportController extends Controller
                 'cancer' => $cancer,
                 'cancer_type' => $thecancer == null ? 'All' : $thecancer,
                 'title' => $title,
-                'search' => view('report.partials.cancerPatAge',compact('pathologies'))->render()
+                'search' => view('report.partials.cancerPatAge',compact('pathologies','title', 'cancer_types'))->render()
             ]);
         }
 
@@ -364,6 +367,7 @@ class ReportController extends Controller
 
         $cancer = array('jsonarray' => $path);
 //        dd($cancer);
+        $pathologies = $path;
 
         if ($request->ajax()) {
             return response()->json([
